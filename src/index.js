@@ -1,22 +1,23 @@
-import * as React from "react";
+import React from 'react';
 import ReactDOM from 'react-dom';
-import AppLayout from './components/Applayout/AppLayout';
-import getAppStore from './store/store';
-
-import './styles/styles.scss';
-
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+import { createStore, applyMiddleware } from 'redux';
+import appReducers from './reducers/index';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import thunk from 'redux-thunk';
 
-const store = getAppStore();
+const store = createStore(
+    appReducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(thunk)
+);
 
 ReactDOM.render(
-
     <Provider store={store}>
-        <BrowserRouter>
-            <AppLayout />
-     </BrowserRouter>
-    </Provider>,
-
-window.document.getElementById('root')
+        <App />
+    </Provider>, 
+    document.getElementById('root')
 );
+registerServiceWorker();
