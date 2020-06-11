@@ -8,9 +8,11 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div>
-                    <Menu />
-                    <div className="container">
+                <div class="d-flex">
+                    <div style={{ width: 200 }}>
+                        <Menu />
+                    </div>
+                    <div className="flex-grow-1">
                         <div className="row">
                             {this.showContentMenus(routes)}
                         </div>

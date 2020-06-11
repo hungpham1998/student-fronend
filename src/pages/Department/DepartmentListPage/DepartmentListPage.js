@@ -43,30 +43,20 @@ class DepartmentListPage extends Component {
         var { department } = this.props;
         return (
             
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm-8">
-                            <form onSubmit={this.onFind}>
-                                <div className="form-group">
-                                    <label>Tìm kiếm : </label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name="Title"
-                                        value={this.state.Title}
-                                        onChange={this.onChange}
-                                />
-                                 <button onSubmit={this.onFind} className="btn btn-primary">Tìm kiếm </button>
-                                </div>
-                            </form>
+                <div className="container p-5">
+                    <form onSubmit={this.onFind} className="mb-4">
+                        <div className="d-flex align-items-center">
+                            <label className="d-block">Tìm kiếm: </label>
+                            <input
+                                type="text"
+                                className="d-block flex-grow-1 mx-3 rounded"
+                                name="Title"
+                                value={this.state.Title}
+                                onChange={this.onChange}
+                            />
+                            <button onSubmit={this.onFind} className="btn btn-primary d-block">Tìm kiếm </button>
                         </div>
-                        <div class="col-sm-4 col-md-1">
-                            <Link to="/department/add" className="btn btn-info mb-10">
-                                Thêm 
-                            </Link>
-                       </div>
-                    </div>
-               
+                    </form>
                     <DepartmentList>
                         {this.showDepartment(department)}
                     </DepartmentList>

@@ -50,10 +50,11 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
 class Menu extends Component {
     render() {
         return (
-            <div className="navbar navbar-default">
-                <ul className="nav navbar-nav">
+            <div  className="navbar navbar-light bg-light">
+                {/* <ol className="nav navbar-nav"> */}
+                <ol className="nav flex-column">
                     {this.showMenus(menus)}
-                </ul>
+                </ol>
             </div>
         );
     }
