@@ -7,13 +7,23 @@ const menus = [
         exact: true
     },
     {
-        name: 'Quản Lý Phòng Ban',
+        name: 'Phòng Ban',
         to: '/departmentlist',
         exact: false
     },
     {
-        name: 'Quản Lý LớpLớp',
+        name: 'Khoa',
+        to: '/specailizedlist',     
+        exact: false
+    },
+    {
+        name: 'Lớp',
         to: '/learnclasslist',
+        exact: false
+    },
+    {
+        name: 'Học sinh',
+        to: '/studentlist',     
         exact: false
     }
 ];

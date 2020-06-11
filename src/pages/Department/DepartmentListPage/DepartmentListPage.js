@@ -43,9 +43,9 @@ class DepartmentListPage extends Component {
         var { department } = this.props;
         return (
             
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-8">
                             <form onSubmit={this.onFind}>
                                 <div className="form-group">
                                     <label>Tìm kiếm : </label>
@@ -60,7 +60,7 @@ class DepartmentListPage extends Component {
                                 </div>
                             </form>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 col-md-1">
                             <Link to="/department/add" className="btn btn-info mb-10">
                                 Thêm 
                             </Link>

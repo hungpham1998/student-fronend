@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { actUpdateSpecailizedRequest, actGetSpecailizedRequest, actAddSpecailizedRequest } from '../../actions/Specailized'
 import { Link } from 'react-router-dom';
-import { actAddLearnclassRequest, actGetLearnclassRequest, actUpdateLearnclassRequest } from '../../actions/LearnClass';
-import { connect } from 'react-redux';
 
-class learnclassActionPage extends Component {
-
+class SpecailizedActionPage extends Component {
+   
     constructor(props) {
         super(props);
         this.state = {
             Id: '',
             Title: '',
             Note: '',
-            //SpecailizedId: ''
+            Code:''
         };
     }
 
@@ -19,7 +19,7 @@ class learnclassActionPage extends Component {
         var { match } = this.props;
         if (match) {
             var Id = match.params.id;
-            this.props.onEditLearnclass(Id);
+            this.props.onEditSpecailized(Id);
         }
     }
 
@@ -31,7 +31,7 @@ class learnclassActionPage extends Component {
                 Id : itemEditing[0].Id,
                 Title :  itemEditing[0].Title,
                 Note : itemEditing[0].Note,
-               // SpecailizedId : itemEditing[0].SpecailizedId
+               Code : itemEditing[0].Code
             });
         }
     }
@@ -47,28 +47,29 @@ class learnclassActionPage extends Component {
 
     onSave = (e) => {
         e.preventDefault();
-        const { Id, Title, Note, SpecailizedId } = this.state;
+        const { Id, Title, Note, Code } = this.state;
         var { history } = this.props;
-        var learnclass = {
+        var specailized = {
             Id : Id,
             Title : Title,
             Note : Note,
-            //SpecailizedId : SpecailizedId
+            Code : Code
         };
         if (Id) {
-            this.props.onUpdateLearnclass(learnclass);
+            this.props.onUpdateSpecailized(specailized);
 
         } else {
-            this.props.onAddLearnclass(learnclass);
+            this.props.onAddSpecailized(specailized);
         }
         history.goBack();
     }
 
+
     render() {
-        const { Title, Note, IdPartment } = this.state;
+        const { Title, Note, Code } = this.state;
         return (
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <form onSubmit={this.onSave}>
+            <div>
+                    <form onSubmit={this.onSave}>
                     <div className="form-group">
                         <label>Tên Lớp: </label>
                         <input
@@ -88,27 +89,26 @@ class learnclassActionPage extends Component {
                             onChange={this.onChange}
                         />
                     </div>
-                    {/* <div className="form-group">
-                        <label> Id Phòng Ban Cha: </label>
+                    <div className="form-group">
+                        <label> Code: </label>
                         <input
                             type="number"
                             className="form-control"
-                            name="IdPartment"
-                            value={IdPartment}
+                            name="Code"
+                            value={Code}
                             onChange={this.onChange}
                         />
-                    </div> */}
-                    <Link to="/learnclasslist" className="btn btn-danger mr-10">
+                    </div>
+                    <Link to="/specailizedlist" className="btn btn-danger mr-10">
                         Trở Lại
                     </Link>
                     <button type="submit" className="btn btn-primary">Lưu Lại</button>
                 </form>
-
             </div>
-        );
+        )
     }
-
 }
+
 
 const mapStateToProps = state => {
     return {
@@ -118,16 +118,16 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        onAddLearnclass : (learnclass) => {
-            dispatch(actAddLearnclassRequest(learnclass));
+        onAddSpecailized : (specailized) => {
+            dispatch(actAddSpecailizedRequest(specailized));
         },
-        onEditLearnclass : (id) => {
-            dispatch(actGetLearnclassRequest(id));
+        onEditSpecailized : (id) => {
+            dispatch(actGetSpecailizedRequest(id));
         },
-        onUpdateLearnclass : (learnclass) => {
-            dispatch(actUpdateLearnclassRequest(learnclass));
+        onUpdateSpecailized : (specailized) => {
+            dispatch(actUpdateSpecailizedRequest(specailized));
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(learnclassActionPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SpecailizedActionPage);
