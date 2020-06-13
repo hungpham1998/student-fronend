@@ -23,7 +23,7 @@ class DepartmentList extends Component {
                                 <th>Chức Năng</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody >
                             {this.props.children}
                         </tbody>
                     </table>

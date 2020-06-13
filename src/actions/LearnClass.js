@@ -38,7 +38,7 @@ export const actDeleteLearnclass = (id) => {
 export const actAddLearnclassRequest = (learnclass) => {
     return dispatch => {
         return callApi('learnclass', 'POST', learnclass).then(res => {
-            dispatch(actAddLearnclass(res.data));
+            dispatch(actAddLearnclass(res.data.learnclass));
         });
     }
 }
@@ -53,6 +53,7 @@ export const actAddLearnclass = (learnclass) => {
 export const actGetLearnclassRequest = (id) => {
     return dispatch => {
         return callApi(`learnclass/${id}`, 'GET', null).then(res => {
+            console.log(res.data);
             dispatch(actGetLearnclass(res.data));
         });
     }
@@ -68,7 +69,6 @@ export const actGetLearnclass = (learnclass) => {
 export const actUpdateLearnclassRequest = (learnclass) => {
     return dispatch => {
         return callApi(`learnclass/${learnclass.Id}`, 'PUT', learnclass).then(res => {
-            console.log(res)
             dispatch(actUpdateLearnclass(res.data.learnclass));
         });
     }

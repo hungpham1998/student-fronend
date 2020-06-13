@@ -26,8 +26,7 @@ const department = (state = departmentState, action) => {
             state.push(action.department);
             return [...state];
         case Types.UPDATE_DEAPRTMENT:
-            index = findIndex(state, department.id);
-            state[index] = department;
+            state= action.department;
             return [...state];
         case Types.FILTER_DEPARTMENT:
             state = action.department;

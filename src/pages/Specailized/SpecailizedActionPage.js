@@ -64,12 +64,13 @@ class SpecailizedActionPage extends Component {
         history.goBack();
     }
 
+    
 
     render() {
-        const { Title, Note, Code } = this.state;
+        const { Id, Title, Note, Code } = this.state;
         return (
-            <div>
-                    <form onSubmit={this.onSave}>
+            <div  className="container p-5 ">
+                <form onSubmit={this.onSave}>
                     <div className="form-group">
                         <label>Tên Lớp: </label>
                         <input
@@ -92,7 +93,7 @@ class SpecailizedActionPage extends Component {
                     <div className="form-group">
                         <label> Code: </label>
                         <input
-                            type="number"
+                            type="text"
                             className="form-control"
                             name="Code"
                             value={Code}

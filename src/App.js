@@ -8,8 +8,8 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div class="d-flex">
-                    <div style={{ width: 200 }}>
+                <div className="d-flex">
+                    <div style={{ width: 250 }} className="p-4">
                         <Menu />
                     </div>
                     <div className="flex-grow-1">

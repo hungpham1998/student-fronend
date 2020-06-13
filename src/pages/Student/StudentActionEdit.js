@@ -16,6 +16,7 @@ class StudentActionEdit extends Component {
             Code:'',
             learnclassId:'',
             Note: '',
+            Address:''
         };
     }
 
@@ -57,7 +58,7 @@ class StudentActionEdit extends Component {
 
     onSave = (e) => {
         e.preventDefault();
-        var { Id, Code, Note, Image,Brithday,Last_Name, Frist_Name,learnclassId } = this.state;
+        var { Id, Code, Note, Image,Brithday,Last_Name, Frist_Name,learnclassId ,Address} = this.state;
         var { history } = this.props;
         var student = {
             Id : Id,
@@ -65,90 +66,112 @@ class StudentActionEdit extends Component {
             Frist_Name: Frist_Name,
             Brithday: Brithday,
             Image: Image,
-            Code:Code,
+            Code: Code,
+            Address:Address,
             learnclassId: learnclassId,
             Note: Note,
         };
         if (Id) {
             this.props.onUpdateStudent(student);
-
+            this.setState({
+                Id: '',
+                Last_Name: '',
+                Frist_Name: '',
+                Brithday: '',
+                Image: '',
+                Code: '',
+                learnclassId: '',
+                Note: '',
+                Address: ''
+            })
         } 
         history.goBack();
     }
 
-    // selectClass = (data) => {
-    //     this.setState({
-    //         learnclassId: data.target.value
-    //     })
-    // }
+    selectClass = (data) => {
+        this.setState({
+            learnclassId: data.target.value
+        })
+    }
+
 
 
     render() {
         const { Address, Note, Code, Image, Brithday, Last_Name, Frist_Name, learnclassId } = this.state;
         const { learnclass } = this.props;
         return (
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div className="container p-5">
                 <form onSubmit={this.onSave}>
-                    <div className="form-group">
-                        <label>Ho: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="Frist_Name"
-                            value={Frist_Name}
-                            onChange={this.onChange}
-                        />
+                    <h3> chỉnh sửa thông tin sinh viên : {Frist_Name + ' '+ Last_Name}</h3>
+                    <div className="form-group row">
+                        <div className="col">
+                            <label >Ho: </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="Frist_Name"
+                                value={Frist_Name}
+                                onChange={this.onChange}
+                            />
+                        </div>
+                        <div className="col">
+                            <label>Tên: </label>
+                            <input
+                                type="text"
+                                className="form-control row"
+                                name="Last_Name"
+                                value={Last_Name}
+                                onChange={this.onChange}
+                            />
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label>Tên: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="Last_Name"
-                            value={Last_Name}
-                            onChange={this.onChange}
-                        />
+                    <div className="form-group row">
+                        <div className="col">
+                            <label>Mã: </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="Code"
+                                value={Code}
+                                onChange={this.onChange}
+                            />
+                        </div>
+                        <div className="col">
+                            {/* <div className="form-control"> */}
+                            <label>Ngày sinh: </label>
+                            <input
+                                type="date"
+                                className="form-control input-append date form_datetime"
+                                name="Brithday"
+                                value={Brithday}
+                                onChange={this.onChange}
+                                />
+                            {/* </div> */}
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label>Mã: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="Code"
-                            value={Code}
-                            onChange={this.onChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Ngày sinh: </label>
-                        <input
-                            type="date"
-                            className="input-append date form_datetime"
-                            name="Brithday"
-                            value={Brithday}
-                            onChange={this.onChange}
-                            readonly
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Anh: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="Image"
-                            value={Image}
-                            onChange={this.onChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Địa chỉ: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="Address"
-                            value={Address}
-                            onChange={this.onChange}
-                        />
+                    <div className="form-group row">
+                        <div className="col">
+                            <label>Anh: </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="Image"
+                                value={Image}
+                                onChange={this.onChange}
+                            />
+                        </div>
+                        <div className="col">
+                            <label> Lớp: </label>
+                            <select className="form-control custom-select custom-select-sm" onChange={this.selectClass}
+                            >
+                                {  (
+                                    learnclass.map((item, index) => {
+                                            return  <option value={item.Id}  key={index} >{item.Title}</option>
+                                        })
+                                ) 
+                                }
+                                </select> 
+                        </div>
                     </div>
                     <div className="form-group">
                         <label>Ghi Chú: </label>
@@ -160,23 +183,14 @@ class StudentActionEdit extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label> Lớp: </label>
-                        <select className="custom-select custom-select-sm" onChange={(e)=>this.setState({learnclassId: e.target.value})}
-                            defaultValue={{
-                                label: learnclass.filter((item) => {
-                                        if (item.Id === learnclassId) {
-                                        
-                                }
-                                }),
-                                value: learnclassId
-                        }}>
-                            {  (
-                                learnclass.map((item, index) => {
-                                        return  <option value={item.Id}  key={index} >{item.Title}</option>
-                                    })
-                            ) 
-                            }
-                            </select>  
+                        <label>Địa chỉ: </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="Address"
+                            value={Address}
+                            onChange={this.onChange}
+                        /> 
                     </div>
                     <Link to="/studentlist" className="btn btn-danger mr-10">
                         Trở Lại

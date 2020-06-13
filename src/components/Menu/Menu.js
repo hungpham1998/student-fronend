@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 const menus = [
     {
         name: 'Trang Chủ',
+        
         to: '/',
         exact: true
     },

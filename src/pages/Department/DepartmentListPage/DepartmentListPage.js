@@ -35,6 +35,9 @@ class DepartmentListPage extends Component {
         e.preventDefault();
         if (this.state.Title.length !== 0) {
             this.props.onFilterDepartment(this.state.Title);
+            this.setState({
+                Title:' '
+            })
         }
 
     }
@@ -43,7 +46,7 @@ class DepartmentListPage extends Component {
         var { department } = this.props;
         return (
             
-                <div className="container p-5">
+                <div className="container p-4">
                     <form onSubmit={this.onFind} className="mb-4">
                         <div className="d-flex align-items-center">
                             <label className="d-block">Tìm kiếm: </label>

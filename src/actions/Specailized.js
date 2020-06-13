@@ -5,7 +5,7 @@ export const actFetchSpecailizedRequest = () => {
     return dispatch => {
         return  callApi('specailized', 'GET', null).then(res => {
             let data = [];
-            res.data.specailized.forEach(item => {
+            res.data.specailized.map(item => {
                 data.push(item);
             });
             dispatch(actFetchSpecailized(data));

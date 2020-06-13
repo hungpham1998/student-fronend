@@ -19,7 +19,6 @@ export default class StudentItem extends Component {
                 <td>{student.Frist_Name}</td>
                 <td> {moment(student.Brithday).format("DD/MM/YYYY")}</td>
                 <td> {student.Address }</td>
-                <td> {student.Image}</td>
                 <td> { student.learnclass != null ? student.learnclass.Title:''}</td>
                 <td>
                     <Link

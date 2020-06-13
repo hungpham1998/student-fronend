@@ -34,6 +34,9 @@ class SpecailizedListPage extends Component {
         e.preventDefault();
         if (this.state.Title.length !== 0) {
             this.props.onFilterSpecailized(this.state.Title);
+            this.setState({
+                Title:' '
+            })
         }
 
     }
@@ -42,33 +45,23 @@ class SpecailizedListPage extends Component {
         const { specailized } = this.props;
         console.log(specailized)
         return (  
-            <div className="container">
-            <div className="row">
-                <div className="col-sm-8">
-                    <form onSubmit={this.onFind}>
-                        <div className="form-group">
-                            <label>Tìm kiếm : </label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                name="Title"
-                                value={this.state.Title}
-                                onChange={this.onChange}
+            <div className="container p-4">
+                <form onSubmit={this.onFind} className="mb-4">
+                    <div className="d-flex align-items-center">
+                    <label className="d-block">Tìm kiếm: </label>
+                        <input
+                            type="text"
+                            className="d-block flex-grow-1 mx-3 rounded"
+                            name="Title"
+                            value={this.state.Title}
+                            onChange={this.onChange}
                         />
-                         <button onSubmit={this.onFind} className="btn btn-primary">Tìm kiếm </button>
-                        </div>
-                    </form>
-                </div>
-                <div className="col-sm-4">
-                    <Link to="/specailized/add" className="btn btn-info mb-10">
-                        Thêm 
-                    </Link>
-               </div>
-            </div>
-       
-            <SpecailizedList>
-                {this.showSpecailized(specailized)}
-            </SpecailizedList>
+                        <button onSubmit={this.onFind} className="btn btn-primary d-block">Tìm kiếm </button>
+                    </div>
+                </form>
+                <SpecailizedList>
+                    {this.showSpecailized(specailized)}
+                </SpecailizedList>
         </div>
         )
     }

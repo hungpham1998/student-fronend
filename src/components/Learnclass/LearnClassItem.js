@@ -14,8 +14,8 @@ class LearnClassItem extends Component {
                 <td>{index + 1}</td>
                 <td>{learnclass.Id}</td>
                 <td>{learnclass.Title}</td>
+                <td> {learnclass.specailizedId != null ?learnclass.specailized.Title: ''}</td>
                 <td>{learnclass.Note}</td>
-                {/* <td> {learnclass}</td> */}
                 <td>
                     <Link
                         to={`/learnclass/${learnclass.Id}/edit`}

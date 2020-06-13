@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { actAddLearnclassRequest, actGetLearnclassRequest, actUpdateLearnclassRequest } from '../../actions/LearnClass';
 import { connect } from 'react-redux';
+import { actFetchSpecailizedRequest } from '../../actions/Specailized';
 
 class learnclassActionPage extends Component {
 
@@ -11,7 +12,7 @@ class learnclassActionPage extends Component {
             Id: '',
             Title: '',
             Note: '',
-            //SpecailizedId: ''
+            specailizedId: ''
         };
     }
 
@@ -21,17 +22,17 @@ class learnclassActionPage extends Component {
             var Id = match.params.id;
             this.props.onEditLearnclass(Id);
         }
+        this.props.fetchAllSpecailized();
     }
 
     componentWillReceiveProps(nextProps){
         if(nextProps && nextProps.itemEditing){
             const { itemEditing } = nextProps;
-            console.log(itemEditing)
             this.setState({
                 Id : itemEditing[0].Id,
                 Title :  itemEditing[0].Title,
                 Note : itemEditing[0].Note,
-               // SpecailizedId : itemEditing[0].SpecailizedId
+                specailizedId : itemEditing[0].specailizedId
             });
         }
     }
@@ -47,57 +48,79 @@ class learnclassActionPage extends Component {
 
     onSave = (e) => {
         e.preventDefault();
-        const { Id, Title, Note, SpecailizedId } = this.state;
+        const { Id, Title, Note, specailizedId } = this.state;
         var { history } = this.props;
         var learnclass = {
             Id : Id,
             Title : Title,
             Note : Note,
-            //SpecailizedId : SpecailizedId
+            specailizedId : specailizedId
         };
-        if (Id) {
-            this.props.onUpdateLearnclass(learnclass);
-
-        } else {
-            this.props.onAddLearnclass(learnclass);
-        }
+        this.props.onUpdateLearnclass(learnclass);
+        this.setState({
+            Id: '',
+            Title: '',
+            Note: '',
+            specailizedId: ''
+        })
         history.goBack();
     }
 
+
+    selectClass = (data) => {
+        this.setState({
+            specailizedId: data.target.value
+        })
+    }
+
+    defaultValue = () => {
+        let data = this.props.specailized.find(item => item.Id === this.state.specailizedId);
+        console.log(data)
+        data.map(item => {
+            if (item.Id === this.state.specailizedId) {
+                return item.Title;
+            }
+        })
+    }
+
+
     render() {
-        const { Title, Note, IdPartment } = this.state;
+        const { Id, Title, Note, specailizedId } = this.state;
+        const { specailized } = this.props;
         return (
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div className="container p-5 ">
                 <form onSubmit={this.onSave}>
-                    <div className="form-group">
-                        <label>Tên Lớp: </label>
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label">Tên Lớp: </label>
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control col-sm-4"
                             name="Title"
                             value={Title}
                             onChange={this.onChange}
                         />
                     </div>
-                    <div className="form-group">
-                        <label>Ghi Chú: </label>
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label">Ghi Chú: </label>
                         <input
-                            className="form-control"
+                            className="form-control col-sm-4 "
                             name="Note"
                             value={Note}
                             onChange={this.onChange}
                         />
                     </div>
-                    {/* <div className="form-group">
-                        <label> Id Phòng Ban Cha: </label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            name="IdPartment"
-                            value={IdPartment}
-                            onChange={this.onChange}
-                        />
-                    </div> */}
+                    <div className="form-group">
+                        <label className="col-sm-2 col-form-label"> Khoa: </label>
+                        <select className="form-control custom-select custom-select-sm" onChange={this.selectClass} defaultValue={this.defaultValue}
+                           >
+                                {  (
+                                    specailized.map((item, index) => {
+                                            return  <option value={item.Id}  key={index} >{item.Title}</option>
+                                        })
+                                ) 
+                                }
+                        </select> 
+                    </div>
                     <Link to="/learnclasslist" className="btn btn-danger mr-10">
                         Trở Lại
                     </Link>
@@ -112,9 +135,11 @@ class learnclassActionPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        itemEditing : state.itemEditing
+        itemEditing: state.itemEditing,
+        specailized: state.specailized,
     }
 }
+
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
@@ -126,7 +151,10 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         onUpdateLearnclass : (learnclass) => {
             dispatch(actUpdateLearnclassRequest(learnclass));
-        }
+        },
+        fetchAllSpecailized : () => {
+            dispatch(actFetchSpecailizedRequest());
+        },
     }
 }
 

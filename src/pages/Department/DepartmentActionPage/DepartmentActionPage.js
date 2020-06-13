@@ -67,34 +67,34 @@ class DepartmentActionPage extends Component {
     }
 
     render() {
-        const { Title, Note, IdPartment } = this.state;
+        const { Id, Title, Note, IdPartment } = this.state;
         return (
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div className="container p-5">
                 <form onSubmit={this.onSave}>
-                    <div className="form-group">
-                        <label>Tên Phòng Ban: </label>
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label">Tên Phòng Ban: </label>
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control col-sm-4"
                             name="Title"
                             value={Title}
                             onChange={this.onChange}
                         />
                     </div>
-                    <div className="form-group">
-                        <label>Ghi Chú: </label>
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label" >Ghi Chú: </label>
                         <input
-                            className="form-control"
+                            className="form-control col-sm-4"
                             name="Note"
                             value={Note}
                             onChange={this.onChange}
                         />
                     </div>
-                    <div className="form-group">
-                        <label> Id Phòng Ban Cha: </label>
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label"> Id Cha: </label>
                         <input
                             type="number"
-                            className="form-control"
+                            className="form-control col-sm-4"
                             name="IdPartment"
                             value={IdPartment}
                             onChange={this.onChange}

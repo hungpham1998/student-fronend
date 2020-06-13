@@ -16,36 +16,15 @@ class StudentActionAdd extends Component {
             Code:'',
             learnclassId:'',
             Note: '',
+            Address:''
         };
     }
 
     componentDidMount() {
-        // var { match } = this.props;
-        // if (match) {
-        //     var Id = match.params.id;
-        //     this.props.onEditStudent(Id);
-        // }
-
         this.props.fetchAllLearnclass()
-
     }
 
-    // componentWillReceiveProps(nextProps){
-    //     if(nextProps && nextProps.itemEditing){
-    //         var { itemEditing } = nextProps;
-    //         this.setState({
-    //             Id: itemEditing[0].Id,
-    //             Last_Name: itemEditing[0].Last_Name,
-    //             Frist_Name: itemEditing[0].Frist_Name,
-    //             Code: itemEditing[0].Code,
-    //             Image: itemEditing[0].Image,
-    //             Brithday: itemEditing[0].Brithday,
-    //             Note: itemEditing[0].Note,
-    //             learnclassId: itemEditing[0].learnclassId
-    //         });
-    //     }
-    // }
-
+    
     onChange = (e) => {
         var target = e.target;
         var name = target.name;
@@ -57,7 +36,7 @@ class StudentActionAdd extends Component {
 
     onSave = (e) => {
         e.preventDefault();
-        var {  Code, Note, Image,Brithday,Last_Name, Frist_Name,learnclassId } = this.state;
+        var {  Code, Note, Image,Brithday,Last_Name, Frist_Name,learnclassId, Address} = this.state;
         var { history } = this.props;
         var student = {
             
@@ -68,6 +47,7 @@ class StudentActionAdd extends Component {
             Code:Code,
             learnclassId: learnclassId,
             Note: Note,
+            Address:Address
         };
        
             this.props.onAddStudent(student);
@@ -86,68 +66,77 @@ class StudentActionAdd extends Component {
         const { Address, Note, Code, Image, Brithday, Last_Name, Frist_Name, } = this.state;
         const { learnclass } = this.props;
         return (
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div className="container p-5">
                 <form onSubmit={this.onSave}>
-                    <div className="form-group">
-                        <label>Ho: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="Frist_Name"
-                            value={Frist_Name}
-                            onChange={this.onChange}
-                        />
+                    <div className="form-group row">
+                        <div className="col">
+                            <label >Ho: </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="Frist_Name"
+                                value={Frist_Name}
+                                onChange={this.onChange}
+                            />
+                        </div>
+                        <div className="col">
+                            <label>Tên: </label>
+                            <input
+                                type="text"
+                                className="form-control row"
+                                name="Last_Name"
+                                value={Last_Name}
+                                onChange={this.onChange}
+                            />
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label>Tên: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="Last_Name"
-                            value={Last_Name}
-                            onChange={this.onChange}
-                        />
+                    <div className="form-group row">
+                        <div className="col">
+                            <label>Mã: </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="Code"
+                                value={Code}
+                                onChange={this.onChange}
+                            />
+                        </div>
+                        <div className="col">
+                            {/* <div className="form-control"> */}
+                            <label>Ngày sinh: </label>
+                            <input
+                                type="date"
+                                className="form-control input-append date form_datetime"
+                                name="Brithday"
+                                value={Brithday}
+                                onChange={this.onChange}
+                                />
+                            {/* </div> */}
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label>Mã: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="Code"
-                            value={Code}
-                            onChange={this.onChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Ngày sinh: </label>
-                        <input
-                            type="date"
-                            className="input-append date form_datetime"
-                            name="Brithday"
-                            value={Brithday}
-                            onChange={this.onChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Anh: </label>
-                        <input
-                            // type="file" //className="form-control-file border" 
-                            type="text"
-                            className="form-control"
-                            name="Image"
-                            value={Image}
-                            onChange={this.onChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Địa chỉ: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="Address"
-                            value={Address}
-                            onChange={this.onChange}
-                        />
+                    <div className="form-group row">
+                        <div className="col">
+                            <label>Anh: </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="Image"
+                                value={Image}
+                                onChange={this.onChange}
+                            />
+                         </div>
+                        <div className="col">
+                            <label> Lớp: </label>
+                            <select className="form-control custom-select custom-select-sm" onChange={this.selectClass}
+                             >
+                                {  (
+                                    learnclass.map((item, index) => {
+                                            return  <option value={item.Id}  key={index} >{item.Title}</option>
+                                        })
+                                ) 
+                                }
+                                </select> 
+                        </div>
                     </div>
                     <div className="form-group">
                         <label>Ghi Chú: </label>
@@ -159,16 +148,14 @@ class StudentActionAdd extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label> Lớp: </label>
-                        <select className="custom-select custom-select-sm" onChange={this.selectClass}
-                       >
-                            {  (
-                                learnclass.map((item, index) => {
-                                        return  <option value={item.Id}  key={index} >{item.Title}</option>
-                                    })
-                            ) 
-                            }
-                            </select>  
+                        <label>Địa chỉ: </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="Address"
+                            value={Address}
+                            onChange={this.onChange}
+                        /> 
                     </div>
                     <Link to="/studentlist" className="btn btn-danger mr-10">
                         Trở Lại

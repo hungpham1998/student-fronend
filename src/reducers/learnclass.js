@@ -13,7 +13,7 @@ var findIndex = (learnclass, id) => {
 
 const learnclass = (state = learnclassState, action) => {
     var index = -1;
-    var { id, learnclass } = action;
+    var { id } = action;
     switch (action.type) {
         case Types.FETCH_LEARNCLASS:
             state = action.learnclass;
@@ -23,11 +23,10 @@ const learnclass = (state = learnclassState, action) => {
             state.splice(index, 1);
             return [...state];
         case Types.ADD_LEARNCLASS:
-            state.push(action.learnclass);
+            state = action.learnclass;
             return [...state];
         case Types.UPDATE_LEARNCLASS:
-            index = findIndex(state, learnclass.Id);
-            state[index] = learnclass;
+            state = action.learnclass;
             return [...state];
         case Types.FILTER_LEARNCLASS:
             state = action.learnclass;

@@ -26,16 +26,16 @@ class StudentListPage extends Component {
     render() {
         const { student } = this.props;
         return (
-            <div className="container">
-            <div className="row">
-                <div className="col-sm-8">
-                </div>
-                <div className="col-sm-4">
-                    <Link to="/student/add" className="btn btn-info mb-10">
-                        Thêm 
-                    </Link>
-            </div>
-            </div>
+            <div className="container p-4">
+            {/* // <div className="row">
+            //     <div className="col-sm-8">
+            //     </div>
+            //     <div className="col-sm-4">
+            //         <Link to="/student/add" className="btn btn-info mb-10">
+            //             Thêm 
+            //         </Link>
+            // </div>
+            // </div> */}
 
             <StudentList>
                 {this.showStudent(student)}

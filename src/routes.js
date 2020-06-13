@@ -3,13 +3,14 @@ import HomePage from './pages/HomePage/HomePage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import DepartmentListPage from './pages/Department/DepartmentListPage/DepartmentListPage';
 import DepartmentActionPage from './pages/Department/DepartmentActionPage/DepartmentActionPage';
-import LearnClassActionPage from './pages/LearnClass/LearnClassActionPage';
 import LearnClassListPage from './pages/LearnClass/LearnClassListPage';
 import StudentListPage from './pages/Student/StudentListPage';
 import StudentActionAdd from './pages/Student/StudentActionAdd';
 import StudentActionEdit from './pages/Student/StudentActionEdit';
 import SpecailizedListPage from './pages/Specailized/SpecailizedListPage';
 import SpecailizedActionPage from './pages/Specailized/SpecailizedActionPage';
+import LearnClassActionAdd from './pages/LearnClass/LearnClassActionAdd';
+import LearnClassActionEdit from './pages/LearnClass/LearnClassActionEdit';
 
 const routes = [
     {
@@ -40,12 +41,12 @@ const routes = [
     {
         path: '/learnclass/add',
         exact: false,
-        main: ({history}) => <LearnClassActionPage history={history}/>
+        main: ({history}) => <LearnClassActionAdd history={history}/>
     },
     {
         path: '/learnclass/:id/edit',
         exact: false,
-        main: ({match, history}) => <LearnClassActionPage match={match} history={history}/>
+        main: ({match, history}) => <LearnClassActionEdit match={match} history={history}/>
     },
     {
         path: '/studentlist',
