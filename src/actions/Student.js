@@ -9,7 +9,10 @@ export const actFetchStudentRequest = () => {
                 data.push(item);
             });
             dispatch(actFetchStudent(data));
-        });
+        })
+            .catch((err) => {
+            console.log(err)
+        })
     };
 }
 

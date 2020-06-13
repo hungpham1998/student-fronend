@@ -16,8 +16,8 @@ export default class StudentList extends Component {
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Id</th>
                                 <th>Mã</th>
+                                <th>Code</th>
                                 <th>Họ</th>
                                 <th>Tên</th>
                                 <th>Ngày sinh</th>

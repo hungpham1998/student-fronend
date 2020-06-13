@@ -11,6 +11,8 @@ import SpecailizedListPage from './pages/Specailized/SpecailizedListPage';
 import SpecailizedActionPage from './pages/Specailized/SpecailizedActionPage';
 import LearnClassActionAdd from './pages/LearnClass/LearnClassActionAdd';
 import LearnClassActionEdit from './pages/LearnClass/LearnClassActionEdit';
+import LearnYearListPage from './pages/LearnYear/LearnYearListPage';
+import LearnYearActionPage from './pages/LearnYear/LearnYearActionPage';
 
 const routes = [
     {
@@ -77,6 +79,21 @@ const routes = [
         path: '/specailized/:id/edit',
         exact: false,
         main: ({match, history}) => <SpecailizedActionPage match={match} history={history}/>
+    },
+    {
+        path: '/learnyearlist',
+        exact: false,
+        main: () => <LearnYearListPage />
+    },
+    {
+        path: '/learnyear/add',
+        exact: false,
+        main: ({history}) => <LearnYearActionPage history={history}/>
+    },
+    {
+        path: '/learnyear/:id/edit',
+        exact: false,
+        main: ({match, history}) => <LearnYearActionPage match={match} history={history}/>
     },
 
 

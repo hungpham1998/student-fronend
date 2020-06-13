@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 const menus = [
     {
         name: 'Trang Chủ',
-        
+
         to: '/',
         exact: true
     },
@@ -25,6 +25,11 @@ const menus = [
     {
         name: 'Học sinh',
         to: '/studentlist',     
+        exact: false
+    },
+    {
+        name: 'Năm học',
+        to: '/learnyearlist',     
         exact: false
     }
 ];
