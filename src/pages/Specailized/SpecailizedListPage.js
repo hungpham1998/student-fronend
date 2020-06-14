@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import SpecailizedItem from '../../components/Specailized/SpecailizedItem';
-import { Link } from 'react-router-dom';
 import SpecailizedList from '../../components/Specailized/SpecailizedList';
 import { connect } from 'react-redux';
 import { actFetchSpecailizedRequest, actDeleteSpecailizedRequest, onFilterSpecailized } from '../../actions/Specailized';

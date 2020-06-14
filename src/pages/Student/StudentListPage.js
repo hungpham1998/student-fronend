@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { actDeleteStudentRequest, actFetchStudentRequest } from '../../actions/Student';
 import StudentList from '../../components/Student/StudentList';
-import { Link } from 'react-router-dom';
 import StudentItem from '../../components/Student/StudentItem';
 import { connect } from 'react-redux';
 

@@ -4,7 +4,10 @@ import learnclass from './learnclass';
 import department from './department';
 import student from './student';
 import specailized from './specailized';
-import learnyear from './LearnYear'
+import learnyear from './LearnYear';
+import subject from './subject';
+
+
 
 const appReducers = combineReducers({
     department,
@@ -12,7 +15,8 @@ const appReducers = combineReducers({
     student,
     itemEditing,
     specailized,
-    learnyear
+    learnyear,
+    subject
 });
 
 export default appReducers;

@@ -31,7 +31,7 @@ class learnclassActionPage extends Component {
 
     onSave = (e) => {
         e.preventDefault();
-        const { Id, Title, Note, specailizedId } = this.state;
+        const { Title, Note, specailizedId } = this.state;
         const { history } = this.props;
         var learnclass = {
             Title : Title,
@@ -50,7 +50,7 @@ class learnclassActionPage extends Component {
     }
 
     render() {
-        const { Id, Title, Note, IdPartment } = this.state;
+        const {  Title, Note } = this.state;
         const { specailized } = this.props;
         return (
             <div className="container p-5 ">

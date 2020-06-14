@@ -31,6 +31,11 @@ const menus = [
         name: 'Năm học',
         to: '/learnyearlist',     
         exact: false
+    },
+    {
+        name: 'Môn học',
+        to: '/subjectlist',     
+        exact: false
     }
 ];
 

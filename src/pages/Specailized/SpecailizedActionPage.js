@@ -67,7 +67,7 @@ class SpecailizedActionPage extends Component {
     
 
     render() {
-        const { Id, Title, Note, Code } = this.state;
+        const {  Title, Note, Code } = this.state;
         return (
             <div  className="container p-5 ">
                 <form onSubmit={this.onSave}>

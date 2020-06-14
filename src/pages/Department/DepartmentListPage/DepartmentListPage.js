@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { actFetchDepartmentRequest, actDeleteDepartmentRequest,onFilterDepartment } from '../../../actions/Department';
 import DepartmentList from '../../../components/Department/DepartmentList/DepartmentList';
 import DepartmentItem from '../../../components/Department/DepartmentItem/DepartmentItem';

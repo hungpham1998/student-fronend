@@ -13,6 +13,9 @@ import LearnClassActionAdd from './pages/LearnClass/LearnClassActionAdd';
 import LearnClassActionEdit from './pages/LearnClass/LearnClassActionEdit';
 import LearnYearListPage from './pages/LearnYear/LearnYearListPage';
 import LearnYearActionPage from './pages/LearnYear/LearnYearActionPage';
+import ListSubjectPage from './pages/Subject/ListSubjectPage';
+import ActionSubjectPage from './pages/Subject/ActionSubjectPage';
+
 
 const routes = [
     {
@@ -94,6 +97,20 @@ const routes = [
         path: '/learnyear/:id/edit',
         exact: false,
         main: ({match, history}) => <LearnYearActionPage match={match} history={history}/>
+    }, {
+        path: '/subjectlist',
+        exact: false,
+        main: () => <ListSubjectPage />
+    },
+    {
+        path: '/subject/add',
+        exact: false,
+        main: ({history}) => <ActionSubjectPage history={history}/>
+    },
+    {
+        path: '/subject/:id/edit',
+        exact: false,
+        main: ({match, history}) => <ActionSubjectPage match={match} history={history}/>
     },
 
 
