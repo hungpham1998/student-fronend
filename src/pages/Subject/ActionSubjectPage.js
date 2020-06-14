@@ -35,8 +35,6 @@ class ActionSubjectPage extends Component {
                 Code: itemEditing[0].Code,
                 CreaditNumber: itemEditing[0].CreaditNumber
             });
-
-            console.log(this.state)
         }
     }
 

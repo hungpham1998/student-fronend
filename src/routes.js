@@ -1,4 +1,5 @@
 import React from 'react';
+
 import HomePage from './pages/HomePage/HomePage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import DepartmentListPage from './pages/Department/DepartmentListPage/DepartmentListPage';
@@ -15,6 +16,8 @@ import LearnYearListPage from './pages/LearnYear/LearnYearListPage';
 import LearnYearActionPage from './pages/LearnYear/LearnYearActionPage';
 import ListSubjectPage from './pages/Subject/ListSubjectPage';
 import ActionSubjectPage from './pages/Subject/ActionSubjectPage';
+import PositionListPage from './pages/Position/PositionListPage';
+import PositionActionPage from './pages/Position/PositionActionPage';
 
 
 const routes = [
@@ -97,7 +100,8 @@ const routes = [
         path: '/learnyear/:id/edit',
         exact: false,
         main: ({match, history}) => <LearnYearActionPage match={match} history={history}/>
-    }, {
+    },
+    {
         path: '/subjectlist',
         exact: false,
         main: () => <ListSubjectPage />
@@ -112,8 +116,21 @@ const routes = [
         exact: false,
         main: ({match, history}) => <ActionSubjectPage match={match} history={history}/>
     },
-
-
+    {
+        path: '/positionlist',
+        exact: false,
+        main: () => <PositionListPage />
+    },
+    {
+        path: '/position/add',
+        exact: false,
+        main: ({history}) => <PositionActionPage history={history}/>
+    },
+    {
+        path: '/position/:id/edit',
+        exact: false,
+        main: ({match, history}) => <PositionActionPage match={match} history={history}/>
+    },
     {
         path: '',
         exact: false,

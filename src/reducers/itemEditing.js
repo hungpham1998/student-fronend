@@ -16,6 +16,8 @@ const itemEditing = (state = initialState, action) => {
             return action.learnyear;
         case Types.EDIT_SUBJECT:
             return action.subject;
+        case Types.EDIT_POSITION:
+            return action.position;
         default:
             return state;
     }

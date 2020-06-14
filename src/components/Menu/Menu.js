@@ -13,6 +13,11 @@ const menus = [
         exact: false
     },
     {
+        name: 'Chức vụ',
+        to: '/positionlist',
+        exact: false
+    },
+    {
         name: 'Khoa',
         to: '/specailizedlist',     
         exact: false

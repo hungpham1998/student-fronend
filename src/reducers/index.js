@@ -6,7 +6,7 @@ import student from './student';
 import specailized from './specailized';
 import learnyear from './LearnYear';
 import subject from './subject';
-
+import position from './Posiotion';
 
 
 const appReducers = combineReducers({
@@ -16,7 +16,8 @@ const appReducers = combineReducers({
     itemEditing,
     specailized,
     learnyear,
-    subject
+    subject,
+    position
 });
 
 export default appReducers;

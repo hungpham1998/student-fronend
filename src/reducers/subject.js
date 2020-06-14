@@ -1,7 +1,7 @@
 import * as Types from './../constants/ActionTypes';
-var subjectState = [];
+const subjectState = [];
 
-var findIndex = (subject, id) => {
+const findIndex = (subject, id) => {
     var result = -1;
     subject.forEach((subject, index) => {
         if (subject.Id === id) {
