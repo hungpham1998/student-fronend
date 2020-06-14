@@ -29,11 +29,6 @@ class StudentListPage extends Component {
             {/* // <div className="row">
             //     <div className="col-sm-8">
             //     </div>
-            //     <div className="col-sm-4">
-            //         <Link to="/student/add" className="btn btn-info mb-10">
-            //             Thêm 
-            //         </Link>
-            // </div>
             // </div> */}
 
             <StudentList>
@@ -55,10 +50,10 @@ class StudentListPage extends Component {
                     onDelete={()=>this.onDelete(student.Id)}
                 />
             );
-    });
-}
-return result;
-}
+            });
+        }
+        return result;
+    }
 
 }
 

@@ -38,7 +38,12 @@ export const actDeleteSubject = (id) => {
 export const actAddSubjectRequest = (subject) => {
     return dispatch => {
         return callApi('subject', 'POST', subject).then(res => {
-            dispatch(actAddSubject(res.data.subject));
+            console.log(res.data)
+            let data = [];
+            res.data.subject.map((item) => {
+                data.push(item)
+            })
+            dispatch(actAddSubject(data));
         });
     }
 }

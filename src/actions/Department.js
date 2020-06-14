@@ -38,7 +38,12 @@ export const actDeleteDepartment = (id) => {
 export const actAddDepartmentRequest = (department) => {
     return dispatch => {
         return callApi('department', 'POST', department).then(res => {
-            dispatch(actAddDepartment(res.data));
+            console.log(res.data)
+            let data = [];
+            res.data.Department.forEach((item) => {
+                data.push(item)
+            })
+            dispatch(actAddDepartment(data));
         });
     }
 }

@@ -13,7 +13,7 @@ var findIndex = (department, id) => {
 
 const department = (state = departmentState, action) => {
     var index = -1;
-    var { id, department } = action;
+    var { id,  } = action;
     switch (action.type) {
         case Types.FETCH_DEAPRTMENT:
             state = action.department;
@@ -23,7 +23,7 @@ const department = (state = departmentState, action) => {
             state.splice(index, 1);
             return [...state];
         case Types.ADD_DEAPRTMENT:
-            state.push(action.department);
+            state=action.department;
             return [...state];
         case Types.UPDATE_DEAPRTMENT:
             state= action.department;

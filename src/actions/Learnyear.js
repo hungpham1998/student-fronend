@@ -38,7 +38,12 @@ export const actDeleteLearnyear = (id) => {
 export const actAddLearnyearRequest = (learnyear) => {
     return dispatch => {
         return callApi('learnyear', 'POST', learnyear).then(res => {
-            dispatch(actAddLearnyear(res.data.learyear));
+            let data = [];
+            console.log(res.data.learnyear)
+            res.data.learnyear.map((item) => {
+                data.push(item)
+            })
+            dispatch(actAddLearnyear(data));
         });
     }
 }

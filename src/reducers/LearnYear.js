@@ -23,7 +23,7 @@ const learnyear = (state = learnyearState, action) => {
             state.splice(index, 1);
             return [...state];
         case Types.ADD_LEARNYEAR:
-            state=action.learnyear;
+            state= action.learnyear;
             return [...state];
         case Types.UPDATE_LEARNYEAR:
             state = action.learnyear;

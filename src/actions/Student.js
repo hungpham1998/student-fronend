@@ -41,7 +41,9 @@ export const actDeleteStudent = (id) => {
 export const actAddStudentRequest = (student) => {
     return dispatch => {
         return callApi('student', 'POST', student).then(res => {
-            dispatch(actAddStudent(res.data.student));
+            let data = [];
+            res.data.student.forEach((item)=> data.push(item))
+            dispatch(actAddStudent(data));
         });
     }
 }

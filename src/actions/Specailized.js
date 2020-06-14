@@ -38,7 +38,12 @@ export const actDeleteSpecailized = (id) => {
 export const actAddSpecailizedRequest = (specailized) => {
     return dispatch => {
         return callApi('specailized', 'POST', specailized).then(res => {
-            dispatch(actAddSpecailized(res.data));
+            // console.log(res.data.specailized)
+            let data = [];
+            res.data.specailized.forEach((item) => {
+                data.push(item);
+            })
+            dispatch(actAddSpecailized(data));
         });
     }
 }
