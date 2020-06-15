@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {  actGetLearnclassRequest } from '../../actions/LearnClass';
 import { connect } from 'react-redux';
 import { moment } from 'moment';
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import Reactexport from 'react-html-table-to-excel';
 
 class StudentLearnClass extends Component {
 
@@ -12,8 +12,7 @@ class StudentLearnClass extends Component {
         this.state = {
             Id: '',
             Title: '',
-            students: [],
-            dataExport:[]
+            students: []
         };
     }
 
@@ -37,12 +36,6 @@ class StudentLearnClass extends Component {
     }
 
 
-    goBack = () => {
-        const { history } = this.props;
-        history.goBack();
-        
-    }
-
      showStudent = (student) => {
          let result = null;
         if (student) {
@@ -55,7 +48,7 @@ class StudentLearnClass extends Component {
      
     studentRender = (student, index) => {
         return (
-            <tr>
+            <tr key={student.Id}>
                 <td >{index + 1}</td >
                 <td>{student.Id}</td>
                 <td>{student.Code}</td>
@@ -91,16 +84,18 @@ class StudentLearnClass extends Component {
                         </tbody>
                     </table>
                 </div>
-            </div>
-                 <Link to="/learnclasslist" className="btn btn-danger mr-10">
-                    Trở Lại
-                </Link>
-                <ReactHTMLTableToExcel  
-                    className="btn btn-info"  
-                    table="emp"  
-                    filename={"Lớp học " + Title}  
-                    sheet="Sheet"  
-                    buttonText="Export excel" />  
+                </div>
+                <div>
+                    <Link to="/learnclasslist" className="btn btn-danger mr-10">
+                        Trở Lại
+                    </Link>
+                    <Reactexport  
+                        className="btn btn-info"  
+                        table="emp"  
+                        filename={"Lớp học " + Title}  
+                        sheet="Sheet" > Export excel
+                    </Reactexport> 
+                </div>
             </div>
         );
     }

@@ -70,7 +70,6 @@ export const actGetStudent = (student) => {
 export const actUpdateStudentRequest = (student) => {
     return dispatch => {
         return callApi(`student/${student.Id}`, 'PUT', student).then(res => {
-            console.log(res)
             dispatch(actUpdateStudent(res.data.student));
         });
     }
@@ -80,6 +79,15 @@ export const actUpdateStudent = (student) => {
     return {
         type : Types.UPDATE_STUDENT,
         student
+    }
+}
+
+export const actGetExportStudentRequest = (id) => {
+    return dispatch => {
+        return callApi(`student/${id}/point`, 'GET', null).then(res => {
+            console.log(res.data)
+            dispatch(actGetStudent(res.data));
+        });
     }
 }
 

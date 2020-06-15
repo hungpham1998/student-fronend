@@ -22,6 +22,7 @@ import PointstudentListPage from './pages/pointstudent/PointstudentListPage';
 import PointstudentActionAdd from './pages/pointstudent/PointstudentActionAdd';
 import PointstudentActionEdit from './pages/pointstudent/PointstudentActionEdit';
 import StudentLearnClass from './pages/LearnClass/StudentLearnClass';
+import ExportStudentPonit from './pages/Student/ExportStudentPonit';
 
 
 
@@ -80,6 +81,11 @@ const routes = [
         path: '/student/:id/edit',
         exact: false,
         main: ({match, history}) => <StudentActionEdit match={match} history={history}/>
+    },
+    {
+        path: '/student/:id/export',
+        exact: false,
+        main: ({match, history}) => <ExportStudentPonit match={match} history={history}/>
     },
     {
         path: '/specailizedlist',

@@ -13,7 +13,8 @@ export default class StudentItem extends Component {
         return (
             <tr>
                 <td>{index + 1}</td>
-                <td>{student.Id}</td>
+                <td><Link
+                        to={`/student/${student.Id}/export`}>{student.Id}</Link></td>
                 <td>{student.Code}</td>
                 <td>{student.Last_Name}</td>
                 <td>{student.Frist_Name}</td>
