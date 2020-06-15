@@ -6,7 +6,7 @@ export default class StudentList extends Component {
         return (
             <div className="panel panel-primary">
                 <div className="panel-heading d-flex justify-content-between">
-                    <h3 className="panel-title">Danh Sách Lớp học</h3>
+                    <h3 className="panel-title">Danh Sách Học sinh</h3>
                     <Link to="/student/add" className="btn btn-info mb-10">
                         Thêm 
                     </Link>

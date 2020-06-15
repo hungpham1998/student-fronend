@@ -42,7 +42,6 @@ class SpecailizedListPage extends Component {
 
     render() {
         const { specailized } = this.props;
-        console.log(specailized)
         return (  
             <div className="container p-4">
                 <form onSubmit={this.onFind} className="mb-4">
@@ -69,7 +68,6 @@ class SpecailizedListPage extends Component {
     showSpecailized(specailized) {
         var result = null;
         if (specailized) {
-            console.log(specailized)
             result = specailized.map((specailized, index) => {
                 return (
                     <SpecailizedItem

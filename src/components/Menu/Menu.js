@@ -41,6 +41,11 @@ const menus = [
         name: 'Môn học',
         to: '/subjectlist',     
         exact: false
+    },
+    {
+        name: 'Bảng điểm',
+        to: '/pointstudentlist',     
+        exact: false
     }
 ];
 

@@ -18,6 +18,11 @@ import ListSubjectPage from './pages/Subject/ListSubjectPage';
 import ActionSubjectPage from './pages/Subject/ActionSubjectPage';
 import PositionListPage from './pages/Position/PositionListPage';
 import PositionActionPage from './pages/Position/PositionActionPage';
+import PointstudentListPage from './pages/pointstudent/PointstudentListPage';
+import PointstudentActionAdd from './pages/pointstudent/PointstudentActionAdd';
+import PointstudentActionEdit from './pages/pointstudent/PointstudentActionEdit';
+import StudentLearnClass from './pages/LearnClass/StudentLearnClass';
+
 
 
 const routes = [
@@ -55,6 +60,11 @@ const routes = [
         path: '/learnclass/:id/edit',
         exact: false,
         main: ({match, history}) => <LearnClassActionEdit match={match} history={history}/>
+    },
+    {
+        path: '/learnclass/:id/export',
+        exact: false,
+        main: ({match, history}) => <StudentLearnClass match={match} history={history}/>
     },
     {
         path: '/studentlist',
@@ -130,6 +140,21 @@ const routes = [
         path: '/position/:id/edit',
         exact: false,
         main: ({match, history}) => <PositionActionPage match={match} history={history}/>
+    },
+    {
+        path: '/pointstudentlist',
+        exact: false,
+        main: () => <PointstudentListPage />
+    },
+    {
+        path: '/pointstudent/add',
+        exact: false,
+        main: ({history}) => <PointstudentActionAdd history={history}/>
+    },
+    {
+        path: '/pointstudent/:id/edit',
+        exact: false,
+        main: ({match, history}) => <PointstudentActionEdit match={match} history={history}/>
     },
     {
         path: '',

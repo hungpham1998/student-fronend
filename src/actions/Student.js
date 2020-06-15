@@ -4,14 +4,11 @@ import callApi from './../utils/apiCaller';
 export const actFetchStudentRequest = () => {
     return dispatch => {
         return  callApi('student', 'GET', null).then(res => {
-            let data = [];
+            let newData = [];
             res.data.student.forEach(item => {
-                data.push(item);
+                newData.push(item);
             });
-            dispatch(actFetchStudent(data));
-        })
-            .catch((err) => {
-            console.log(err)
+            dispatch(actFetchStudent(newData));
         })
     };
 }
@@ -58,7 +55,6 @@ export const actAddStudent = (student) => {
 export const actGetStudentRequest = (id) => {
     return dispatch => {
         return callApi(`student/${id}`, 'GET', null).then(res => {
-            console.log(res.data)
             dispatch(actGetStudent(res.data));
         });
     }

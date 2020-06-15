@@ -18,6 +18,8 @@ const itemEditing = (state = initialState, action) => {
             return action.subject;
         case Types.EDIT_POSITION:
             return action.position;
+        case Types.EDIT_POINTSTUDENT:
+            return action.pointstudent;
         default:
             return state;
     }

@@ -29,10 +29,10 @@ class learnclassActionPage extends Component {
         if(nextProps && nextProps.itemEditing){
             const { itemEditing } = nextProps;
             this.setState({
-                Id : itemEditing[0].Id,
-                Title :  itemEditing[0].Title,
-                Note : itemEditing[0].Note,
-                specailizedId : itemEditing[0].specailizedId
+                Id : itemEditing[0] && itemEditing[0].Id,
+                Title :  itemEditing[0] && itemEditing[0].Title,
+                Note : itemEditing[0] && itemEditing[0].Note,
+                specailizedId : itemEditing[0] && itemEditing[0].specailizedId
             });
         }
     }
@@ -73,16 +73,6 @@ class learnclassActionPage extends Component {
         })
     }
 
-    defaultValue = () => {
-        let data = this.props.specailized.find(item => item.Id === this.state.specailizedId);
-        console.log(data)
-        data.map(item => {
-            if (item.Id === this.state.specailizedId) {
-                return item.Title;
-            }
-        })
-    }
-
 
     render() {
         const { Id, Title, Note, specailizedId } = this.state;
@@ -111,7 +101,8 @@ class learnclassActionPage extends Component {
                     </div>
                     <div className="form-group">
                         <label className="col-sm-2 col-form-label"> Khoa: </label>
-                        <select className="form-control custom-select custom-select-sm" onChange={this.selectClass} defaultValue={this.defaultValue}
+                        <select className="form-control custom-select custom-select-sm" onChange={this.selectClass}
+                             value={specailizedId}
                            >
                                 {  (
                                     specailized.map((item, index) => {

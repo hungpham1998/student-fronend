@@ -7,7 +7,7 @@ import specailized from './specailized';
 import learnyear from './LearnYear';
 import subject from './subject';
 import position from './Posiotion';
-
+import pointstudent from './pointstudent';
 
 const appReducers = combineReducers({
     department,
@@ -17,7 +17,8 @@ const appReducers = combineReducers({
     specailized,
     learnyear,
     subject,
-    position
+    position,
+    pointstudent
 });
 
 export default appReducers;

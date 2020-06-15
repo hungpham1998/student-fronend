@@ -90,7 +90,7 @@ export const onFilterPosition = (title) => {
         return callApi(`position/find?Title=${title}`, 'GET',null
           ).then(res =>{
               let data = [];
-                res.data.position.rows.map(item => {
+                res.data.Position.rows.map(item => {
                     data.push(item);
                 });
                 dispatch(actFilterPosition(data));

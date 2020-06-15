@@ -39,7 +39,7 @@ export const actAddLearnyearRequest = (learnyear) => {
     return dispatch => {
         return callApi('learnyear', 'POST', learnyear).then(res => {
             let data = [];
-            console.log(res.data.learnyear)
+            // console.log(res.data.learnyear)
             res.data.learnyear.map((item) => {
                 data.push(item)
             })
