@@ -101,7 +101,8 @@ class ExportStudentPonit extends Component {
                     className="btn btn-info"  
                     table="point"  
                     filename={"Bảng điểm sinh viên" + Title}  
-                        sheet="Sheet"  > Export Điểm
+                        sheet="Sheet"
+                        buttonText="Export">
                 </Reactexport>
             </div>
         </div>

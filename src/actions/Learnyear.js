@@ -5,7 +5,7 @@ export const actFetchLearnyearRequest = () => {
     return dispatch => {
         return  callApi('learnyear', 'GET', null).then(res => {
             let data = [];
-            res.data.learnYear.rows.map(item => {
+            res.data.learnYear.rows.forEach(item => {
                 data.push(item);
             });
             dispatch(actFetchLearnyear(data));

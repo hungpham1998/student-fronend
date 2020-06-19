@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Menu from './components/Menu/Menu';
 import routes from './routes';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router,  } from 'react-router-dom';
+import { createBrowserHistory } from 'history'
 
+const history = createBrowserHistory()
 class App extends Component {
     render() {
         return (
-            <Router>
+            <Router history={history}>
                 <div className="d-flex">
                     <div style={{ width: 250 }} className="p-4">
                         <Menu />
@@ -18,7 +20,7 @@ class App extends Component {
                         </div>
                     </div>
                 </div>
-            </Router>
+            </Router>                
         );
     }
 
@@ -36,7 +38,9 @@ class App extends Component {
                 );
             });
         }
-        return <Switch>{result}</Switch>;
+        return <Switch>
+            {result}
+        </Switch>;
     }
 
 }

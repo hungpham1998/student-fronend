@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 const menus = [
     {
-        name: 'Trang Chủ',
-
+        name: 'trang chu',
         to: '/',
-        exact: true
+        exact: false
     },
     {
         name: 'Phòng Ban',
@@ -70,12 +73,27 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
 
 class Menu extends Component {
     render() {
-        return (
-            <div  className="navbar navbar-light bg-light">
-                {/* <ol className="nav navbar-nav"> */}
+        const { isAuthenticated, user } = this.props.authReducer;
+        console.log(user)
+        const authLinks = (
+            <div className="navbar navbar-light bg-light">
+                {/* <ol className="nav navbar-nav">  */}
                 <ol className="nav flex-column">
-                    {this.showMenus(menus)}
-                </ol>
+                <a className="nav-link">
+                    {/* <img src={user.avatar} alt={user.name} title={user.name}
+                        className="rounded-circle"
+                        style={{ width: '25px', marginRight: '5px'}} /> */}
+                            Logout
+                </a>
+                    <li>
+                        {this.showMenus(menus)}
+                    </li>
+                 </ol>
+            </div>
+        )
+        return (
+            <div>
+                     {isAuthenticated ? authLinks : <Redirect to="/login" />}
             </div>
         );
     }
@@ -99,4 +117,13 @@ class Menu extends Component {
 
 }
 
-export default Menu;
+
+
+const mapStateToProps = (state) => ({
+    authReducer: state.authReducer,
+});
+
+Menu.propTypes = {
+    authReducer: PropTypes.object.isRequired
+}
+export default connect(mapStateToProps)(withRouter(Menu));

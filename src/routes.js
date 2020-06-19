@@ -23,6 +23,7 @@ import PointstudentActionAdd from './pages/pointstudent/PointstudentActionAdd';
 import PointstudentActionEdit from './pages/pointstudent/PointstudentActionEdit';
 import StudentLearnClass from './pages/LearnClass/StudentLearnClass';
 import ExportStudentPonit from './pages/Student/ExportStudentPonit';
+import Login from './pages/Login/Login';
 
 
 
@@ -163,10 +164,16 @@ const routes = [
         main: ({match, history}) => <PointstudentActionEdit match={match} history={history}/>
     },
     {
+        path: '/login',
+        exact: false,
+        main: () => <Login />
+    },
+    {
         path: '',
         exact: false,
         main: () => <NotFoundPage />
     }
+
 ];
 
 export default routes;

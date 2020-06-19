@@ -72,7 +72,7 @@ class SpecailizedActionPage extends Component {
             <div  className="container p-5 ">
                 <form onSubmit={this.onSave}>
                     <div className="form-group">
-                        <label>Tên Lớp: </label>
+                        <label>Tên Khoa </label>
                         <input
                             type="text"
                             className="form-control"
