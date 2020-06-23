@@ -12,7 +12,6 @@ class SubjectItem extends Component {
         return (
             <tr>
                 <td>{index + 1}</td>
-                <td>{subject.Id}</td>
                 <td>{subject.Code}</td>
                 <td>{subject.Title}</td>
                 <td>{subject.CreaditNumber}</td>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import { MDBModal, MDBModalHeader, MDBModalFooter, MDBBtn, MDBModalBody } from 'mdbreact';
 import { Link } from 'react-router-dom';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter } from 'mdbreact';
-
-export default class SpecailizedItem extends Component {
+import moment from 'moment';
+export default class AttendancesheetItem extends Component {
     state = {
         modal: false
       }
@@ -18,16 +18,20 @@ export default class SpecailizedItem extends Component {
     }
 
     render() {
-        var { specailized, index } = this.props;
+        var { attendancesheet, index } = this.props;
+
         return (
             <tr>
                 <td>{index + 1}</td>
-                <td>{specailized.Code}</td>
-                <td>{specailized.Title}</td>
-                <td>{specailized.Note}</td>
+                <td>{attendancesheet.Times}</td>
+                <td>{moment(attendancesheet.TimesDate).format("DD/MM/YYYY")}</td>
+                <td>{attendancesheet.Note}</td>
+                <td>{attendancesheet.subjectId != null ? attendancesheet.subject.Title :''}</td>
+                <td>{attendancesheet.studentId  != null ? attendancesheet.student.Frist_Name + ' ' +attendancesheet.student.Last_Name :' '}</td>
+                <td>{attendancesheet.accountId != null ? attendancesheet.account.UserName : ''}</td>
                 <td>
                     <Link
-                        to={`/specailized/${specailized.Id}/edit`}
+                        to={`/attendancesheet/${attendancesheet.Id}/edit`}
                         className="btn btn-success"
                     >
                        Sửa
@@ -41,11 +45,11 @@ export default class SpecailizedItem extends Component {
                             <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
                                 <MDBModalHeader toggle={this.toggle}></MDBModalHeader>
                                  <MDBModalBody>
-                                <span style={{ color: 'black' }}> Bạn chắc chắn muốn xóa khoa <b> {specailized.Title}</b>  </span>
+                                <span style={{ color: 'black' }}> Bạn chắc chắn muốn xóa phiếu <b> {attendancesheet.Id}</b>  </span>
                                 </MDBModalBody>
                                 <MDBModalFooter>
                                 <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
-                                <MDBBtn color="primary" onClick={() => this.onDelete(specailized.id)}>Xóa</MDBBtn>
+                                <MDBBtn color="primary" onClick={() => this.onDelete(attendancesheet.id)}>Xóa</MDBBtn>
                                 </MDBModalFooter>
                             </MDBModal>
                 </button>
@@ -53,4 +57,4 @@ export default class SpecailizedItem extends Component {
             </tr>
         );
     }
-};
+}

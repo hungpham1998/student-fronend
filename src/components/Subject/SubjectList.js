@@ -15,7 +15,6 @@ import React, { Component } from 'react';
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Mã</th>
                             <th>Code</th>
                             <th>Tên Môn học</th>
                              <th>Số tín</th>   

@@ -66,6 +66,19 @@ class StudentLearnClass extends Component {
                <div className="panel panel-primary">
                 <div className="panel-heading d-flex justify-content-between">
                         <h3 className="panel-title">Danh sách sinh viên lớp: {Title}</h3>
+                        <div>
+                            <Reactexport  
+                                    className="btn btn-info"
+                                    table="emp"
+                                    filename={"Lớp học " + Title}
+                                    sheet="Sheet"
+                                    buttonText={`Export excel`}
+                                > 
+                            </Reactexport>
+                            <Link to="/learnclasslist" className="btn btn-danger mr-10">
+                                Trở Lại
+                            </Link> 
+                         </div>
                 </div>
                 <div className="panel-body">
                     <table className="table table-bordered table-hover" id="emp">
@@ -84,17 +97,6 @@ class StudentLearnClass extends Component {
                         </tbody>
                     </table>
                 </div>
-                </div>
-                <div>
-                    <Link to="/learnclasslist" className="btn btn-danger mr-10">
-                        Trở Lại
-                    </Link>
-                    <Reactexport  
-                        className="btn btn-info"  
-                        table="emp"  
-                        filename={"Lớp học " + Title}  
-                        sheet="Sheet" > Export excel
-                    </Reactexport> 
                 </div>
             </div>
         );

@@ -67,7 +67,7 @@ class DepartmentActionPage extends Component {
     }
 
     render() {
-        const { Id, Title, Note, IdPartment } = this.state;
+        const {  Title, Note, IdPartment } = this.state;
         return (
             <div className="container p-5">
                 <form onSubmit={this.onSave}>
@@ -100,10 +100,10 @@ class DepartmentActionPage extends Component {
                             onChange={this.onChange}
                         />
                     </div>
+                    <button type="submit" className="btn btn-primary">Lưu Lại</button>
                     <Link to="/departmentlist" className="btn btn-danger mr-10">
                         Trở Lại
                     </Link>
-                    <button type="submit" className="btn btn-primary">Lưu Lại</button>
                 </form>
 
             </div>

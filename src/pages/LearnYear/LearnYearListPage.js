@@ -59,7 +59,7 @@ class LearnYearListPage extends Component {
                                 value={this.state.Title}
                                 onChange={this.onChange}
                             />
-                            <button onSubmit={this.onFind} className="btn btn-primary d-block">Tìm kiếm   <i class="fa fa-times"></i> </button>
+                            <button onSubmit={this.onFind} className="btn btn-primary d-block">Tìm kiếm  </button>
                         </div>
                     </form>
                     <LearnYearList>

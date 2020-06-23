@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
+import { MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter, MDBBtn } from 'mdbreact';
 import { Link } from 'react-router-dom';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter } from 'mdbreact';
-
-export default class SpecailizedItem extends Component {
+export default class AccountItem extends Component {
     state = {
         modal: false
       }
@@ -18,16 +17,21 @@ export default class SpecailizedItem extends Component {
     }
 
     render() {
-        var { specailized, index } = this.props;
+        var { account, index } = this.props;
         return (
             <tr>
                 <td>{index + 1}</td>
-                <td>{specailized.Code}</td>
-                <td>{specailized.Title}</td>
-                <td>{specailized.Note}</td>
-                <td>
+                <td>{account.UserName}</td>
+                <td>{account.Account}</td>
+                <td>{account.Address}</td>
+                <td>{account.Mail}</td>
+                <td>{account.departmentId  != null ? account.department.Title :' '}</td>
+                <td>{account.positionId != null ? account.position.Title : ''}</td>
+                <td>{account.roles.length > 0 ? account.roles.map(item => {return item.Title}): ''}</td>
+
+                {/* <td>
                     <Link
-                        to={`/specailized/${specailized.Id}/edit`}
+                        to={`/account/${account.Id}/edit`}
                         className="btn btn-success"
                     >
                        Sửa
@@ -41,16 +45,16 @@ export default class SpecailizedItem extends Component {
                             <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
                                 <MDBModalHeader toggle={this.toggle}></MDBModalHeader>
                                  <MDBModalBody>
-                                <span style={{ color: 'black' }}> Bạn chắc chắn muốn xóa khoa <b> {specailized.Title}</b>  </span>
+                                <span style={{ color: 'black' }}> Bạn chắc chắn muốn xóa khoa <b> {account.UserName}</b>  </span>
                                 </MDBModalBody>
                                 <MDBModalFooter>
                                 <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
-                                <MDBBtn color="primary" onClick={() => this.onDelete(specailized.id)}>Xóa</MDBBtn>
+                                <MDBBtn color="primary" onClick={() => this.onDelete(account.id)}>Xóa</MDBBtn>
                                 </MDBModalFooter>
                             </MDBModal>
                 </button>
-                </td>
+                </td> */}
             </tr>
         );
     }
-};
+}

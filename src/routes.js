@@ -24,6 +24,10 @@ import PointstudentActionEdit from './pages/pointstudent/PointstudentActionEdit'
 import StudentLearnClass from './pages/LearnClass/StudentLearnClass';
 import ExportStudentPonit from './pages/Student/ExportStudentPonit';
 import Login from './pages/Login/Login';
+import AccountListPage from './pages/Account/AccountListPage';
+import AccountActionAdd from './pages/Account/AccountActionAdd';
+import AttendancesheetListPage from './pages/Attendancesheet/AttendancesheetListPage';
+import AttendancesheetActionPage from './pages/Attendancesheet/AttendancesheetActionPage';
 
 
 
@@ -162,6 +166,31 @@ const routes = [
         path: '/pointstudent/:id/edit',
         exact: false,
         main: ({match, history}) => <PointstudentActionEdit match={match} history={history}/>
+    },
+    {
+        path: '/accountlist',
+        exact: false,
+        main: () => <AccountListPage />
+    },
+    {
+        path: '/account/add',
+        exact: false,
+        main: ({history}) => <AccountActionAdd history={history} />
+    },
+    {
+        path: '/attendancesheetlist',
+        exact: false,
+        main: () => <AttendancesheetListPage />
+    },
+    {
+        path: '/attendancesheet/add',
+        exact: false,
+        main: ({history}) => <AttendancesheetActionPage history={history} />
+    },
+    {
+        path: '/attendancesheet/:id/edit',
+        exact: false,
+        main: ({history, match}) => <AttendancesheetActionPage history={history} match={match} />
     },
     {
         path: '/login',

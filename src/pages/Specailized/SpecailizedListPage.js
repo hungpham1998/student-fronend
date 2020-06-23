@@ -34,7 +34,7 @@ class SpecailizedListPage extends Component {
         if (this.state.Title.length !== 0) {
             this.props.onFilterSpecailized(this.state.Title);
             this.setState({
-                Title:' '
+                Title:''
             })
         }
 

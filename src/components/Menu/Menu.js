@@ -5,21 +5,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 const menus = [
-    {
-        name: 'trang chu',
-        to: '/',
-        exact: false
-    },
-    {
-        name: 'Phòng Ban',
-        to: '/departmentlist',
-        exact: false
-    },
-    {
-        name: 'Chức vụ',
-        to: '/positionlist',
-        exact: false
-    },
+    // {
+    //     name: 'trang chu',
+    //     to: '/',
+    //     exact: false
+    // },
     {
         name: 'Khoa',
         to: '/specailizedlist',     
@@ -49,7 +39,27 @@ const menus = [
         name: 'Bảng điểm',
         to: '/pointstudentlist',     
         exact: false
-    }
+    },
+    {
+        name: 'Điểm danh',
+        to: '/attendancesheetlist',     
+        exact: false
+    },
+    {
+        name: 'Phòng Ban',
+        to: '/departmentlist',
+        exact: false
+    },
+    {
+        name: 'Chức vụ',
+        to: '/positionlist',
+        exact: false
+    },
+    {
+        name: 'Tài khoản',
+        to: '/accountlist',
+        exact: false
+    },
 ];
 
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {

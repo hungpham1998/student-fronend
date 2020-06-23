@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actUpdateSpecailizedRequest, actGetSpecailizedRequest, actAddSpecailizedRequest } from '../../actions/Specailized'
 import { Link } from 'react-router-dom';
+import { MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 
 class SpecailizedActionPage extends Component {
    
@@ -71,39 +72,67 @@ class SpecailizedActionPage extends Component {
         return (
             <div  className="container p-5 ">
                 <form onSubmit={this.onSave}>
-                    <div className="form-group">
-                        <label>Tên Khoa </label>
+                    <MDBRow>
+                        <MDBCol md="4" className="mb-3">
+                        <label
+                            htmlFor="defaultFormRegisterNameEx"
+                            className="grey-text"
+                        >
+                            Tên Khoa
+                        </label>
                         <input
-                            type="text"
-                            className="form-control"
                             name="Title"
                             value={Title}
                             onChange={this.onChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Ghi Chú: </label>
-                        <input
+                            type="text"
+                            id="defaultFormRegisterNameEx"
                             className="form-control"
+                            placeholder="First Title"
+                            required
+                        />
+                        </MDBCol>
+                        <MDBCol md="4" className="mb-3">
+                        <label
+                            htmlFor="defaultFormRegisterEmailEx2"
+                            className="grey-text"
+                        >
+                            Ghi Chú:
+                        </label>
+                        <input
                             name="Note"
                             value={Note}
                             onChange={this.onChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label> Code: </label>
-                        <input
                             type="text"
+                            id="defaultFormRegisterEmailEx2"
                             className="form-control"
-                            name="Code"
-                            value={Code}
-                            onChange={this.onChange}
+                            placeholder="Note"
+                            required
                         />
-                    </div>
+                        </MDBCol>
+                        <MDBCol md="4" className="mb-3">
+                        <label
+                            htmlFor="defaultFormRegisterConfirmEx3"
+                            className="grey-text"
+                        >
+                            Code:
+                        </label>
+                        <input
+                        name="Code"
+                        value={Code}
+                        onChange={this.onChange}
+                            id="defaultFormRegisterConfirmEx3"
+                            className="form-control"
+                            placeholder="Code"
+                        />
+                        
+                        </MDBCol>
+                    </MDBRow>
+                    <MDBBtn color="primary" type="submit">
+                        Lưu Lại
+                    </MDBBtn>
                     <Link to="/specailizedlist" className="btn btn-danger mr-10">
                         Trở Lại
                     </Link>
-                    <button type="submit" className="btn btn-primary">Lưu Lại</button>
                 </form>
             </div>
         )

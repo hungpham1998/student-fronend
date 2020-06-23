@@ -12,7 +12,6 @@ export default class PointstudentItem extends Component {
         return (
             <tr>
                 <td>{index + 1}</td>
-                <td>{pointstudent.Id}</td>
                 <td>{pointstudent.subjectId != null ?pointstudent.subject.Title: ''}</td>
                 <td> {pointstudent.studentId != null ?pointstudent.student.Frist_Name + " " + pointstudent.student.Last_Name: ''}</td>
                 <td>{pointstudent.learnyearId != null ? pointstudent.learnyear.Title : ''}</td>
@@ -33,6 +32,7 @@ export default class PointstudentItem extends Component {
                         className="btn btn-danger"
                         onClick={() => this.onDelete(pointstudent.id)}
                     >
+                        
                         Xóa
                 </button>
                 </td>

@@ -157,10 +157,10 @@ class StudentActionAdd extends Component {
                             onChange={this.onChange}
                         /> 
                     </div>
+                    <button type="submit" className="btn btn-primary">Lưu Lại</button>
                     <Link to="/studentlist" className="btn btn-danger mr-10">
                         Trở Lại
                     </Link>
-                    <button type="submit" className="btn btn-primary">Lưu Lại</button>
                 </form>
 
             </div>

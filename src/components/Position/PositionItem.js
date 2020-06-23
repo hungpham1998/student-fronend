@@ -12,7 +12,6 @@ class PositionItem extends Component {
         return (
             <tr>
                 <td>{index + 1}</td>
-                <td>{position.Id}</td>
                 <td>{position.Title}</td>
                 <td>{position.Note}</td>
                 <td>

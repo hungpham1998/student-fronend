@@ -16,7 +16,6 @@ export default class SpecailizedList extends Component {
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Mã</th>
                             <th>Code</th>
                             <th>Tên Khoa</th>
                             <th>Note</th>

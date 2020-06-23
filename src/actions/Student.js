@@ -85,11 +85,11 @@ export const actUpdateStudent = (student) => {
 export const actGetExportStudentRequest = (id) => {
     return dispatch => {
         return callApi(`student/${id}/point`, 'GET', null).then(res => {
-            console.log(res.data)
             dispatch(actGetStudent(res.data));
         });
     }
 }
+
 
 // filter 
 // export const onFilterStudent = (title) => {

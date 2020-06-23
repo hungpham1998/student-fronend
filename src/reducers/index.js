@@ -10,6 +10,10 @@ import position from './Posiotion';
 import pointstudent from './pointstudent';
 import errorReducer from './errorReducer';
 import authReducer from './authReducer';
+import account from './accountReducer';
+import role from './roleReducer';
+import attendancesheet from './attendancesheet';
+
 
 const appReducers = combineReducers({
     department,
@@ -22,7 +26,10 @@ const appReducers = combineReducers({
     position,
     pointstudent,
     errorReducer,
-    authReducer
+    authReducer,
+    account,
+    role,
+    attendancesheet
 });
 
 export default appReducers;

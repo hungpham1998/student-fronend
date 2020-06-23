@@ -16,7 +16,6 @@ class PositionList extends Component {
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Mã</th>
                             <th>Tên Chức Vụ</th>
                             <th>Note</th>
                             <th>Chức Năng</th>

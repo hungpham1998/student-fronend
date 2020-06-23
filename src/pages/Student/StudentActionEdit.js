@@ -35,14 +35,14 @@ class StudentActionEdit extends Component {
         if(nextProps && nextProps.itemEditing){
             var { itemEditing } = nextProps;
             this.setState({
-                Id: itemEditing[0].Id,
-                Last_Name: itemEditing[0].Last_Name,
-                Frist_Name: itemEditing[0].Frist_Name,
-                Code: itemEditing[0].Code,
-                Image: itemEditing[0].Image,
-                Brithday: itemEditing[0].Brithday,
-                Note: itemEditing[0].Note,
-                learnclassId: itemEditing[0].learnclassId
+                Id: itemEditing && itemEditing[0].Id,
+                Last_Name: itemEditing && itemEditing[0].Last_Name,
+                Frist_Name: itemEditing && itemEditing[0].Frist_Name,
+                Code: itemEditing && itemEditing[0].Code,
+                Image: itemEditing && itemEditing[0].Image,
+                Brithday: itemEditing &&  itemEditing[0].Brithday,
+                Note: itemEditing && itemEditing[0].Note,
+                learnclassId: itemEditing && itemEditing[0].learnclassId
             });
         }
     }
@@ -192,10 +192,10 @@ class StudentActionEdit extends Component {
                             onChange={this.onChange}
                         /> 
                     </div>
+                    <button type="submit" className="btn btn-primary">Lưu Lại</button>
                     <Link to="/studentlist" className="btn btn-danger mr-10">
                         Trở Lại
                     </Link>
-                    <button type="submit" className="btn btn-primary">Lưu Lại</button>
                 </form>
 
             </div>

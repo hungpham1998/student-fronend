@@ -16,7 +16,6 @@ export default class LearnClassList extends Component {
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Mã</th>
                                 <th>Tên Lớp học</th>
                                 <th>Tên Khoa</th>
                                 <th>Note</th>

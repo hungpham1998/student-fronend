@@ -16,7 +16,6 @@ class DepartmentList extends Component {
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Mã</th>
                                 <th>Tên Phòng Ban</th>
                                 <th>Note</th>
                                 <th>Phòng Ban Cha</th>

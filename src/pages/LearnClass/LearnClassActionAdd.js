@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { actAddLearnclassRequest, actGetLearnclassRequest, actUpdateLearnclassRequest } from '../../actions/LearnClass';
 import { connect } from 'react-redux';
 import { actFetchSpecailizedRequest } from '../../actions/Specailized';
+import { MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 
 class learnclassActionPage extends Component {
 
@@ -55,42 +56,69 @@ class learnclassActionPage extends Component {
         return (
             <div className="container p-5 ">
                 <form onSubmit={this.onSave}>
-                    <div className="form-group row">
-                        <label className="col-sm-2 col-form-label">Tên Lớp: </label>
+                <MDBRow>
+                    <MDBCol md="4" className="mb-3">
+                        <label
+                            htmlFor="defaultFormRegisterNameEx"
+                            className="grey-text"
+                        >
+                            Tên Lớp:
+                        </label>
                         <input
-                            type="text"
-                            className="form-control col-sm-4"
                             name="Title"
                             value={Title}
                             onChange={this.onChange}
+                            type="text"
+                            id="defaultFormRegisterNameEx"
+                            className="form-control"
+                            placeholder="First Title"
+                            required
                         />
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-sm-2 col-form-label">Ghi Chú: </label>
+                    </MDBCol>
+                    <MDBCol md="4" className="mb-3">
+                        <label
+                            htmlFor="defaultFormRegisterEmailEx2"
+                            className="grey-text"
+                        >
+                            Ghi Chú:
+                        </label>
                         <input
-                            className="form-control col-sm-4 "
                             name="Note"
                             value={Note}
                             onChange={this.onChange}
+                            type="text"
+                            id="defaultFormRegisterEmailEx2"
+                            className="form-control"
+                            placeholder="Note"
+                            required
                         />
-                    </div>
-                    <div className="form-group">
-                        <label className="col-sm-2 col-form-label"> Khoa: </label>
-                        <select className="form-control custom-select custom-select-sm" onChange={this.selectClass}
-
-                             >
+                    </MDBCol>
+                    <MDBCol md="4" className="mb-3">
+                        <label
+                            htmlFor="defaultFormRegisterConfirmEx3"
+                            className="grey-text"
+                        >
+                                Khoa:
+                        </label>
+                        <select id="defaultFormRegisterConfirmEx3"
+                                className="form-control"
+                                onChange={this.selectClass}
+                                required>
                                 {  (
                                     specailized.map((item, index) => {
                                             return  <option value={item.Id}  key={index} >{item.Title}</option>
                                         })
                                 ) 
                                 }
-                                </select> 
-                    </div>
+                        </select> 
+                        </MDBCol>
+                    </MDBRow>
+                    <MDBBtn color="primary" type="submit">
+                        Lưu Lại
+                    </MDBBtn>
                     <Link to="/learnclasslist" className="btn btn-danger mr-10">
                         Trở Lại
                     </Link>
-                    <button type="submit" className="btn btn-primary">Lưu Lại</button>
                 </form>
 
             </div>
@@ -101,7 +129,7 @@ class learnclassActionPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        itemEditing: state.itemEditing,
+   //     itemEditing: state.itemEditing,
         specailized: state.specailized
     }
 }
@@ -111,9 +139,9 @@ const mapDispatchToProps = (dispatch, props) => {
         onAddLearnclass : (learnclass) => {
             dispatch(actAddLearnclassRequest(learnclass));
         },
-        onEditLearnclass : (id) => {
-            dispatch(actGetLearnclassRequest(id));
-        },
+        // onEditLearnclass : (id) => {
+        //     dispatch(actGetLearnclassRequest(id));
+        // },
         onUpdateLearnclass : (learnclass) => {
             dispatch(actUpdateLearnclassRequest(learnclass));
         },
