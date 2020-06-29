@@ -6,7 +6,7 @@ import { actFetchRoleRequest } from '../../actions/Roleaction';
 import { actFetchDepartmentRequest } from '../../actions/Department';
 import { actFetchPositionRequest } from '../../actions/Position';
 import { actAddAccountRequest } from '../../actions/Accountaction';
-
+import ImageUploader from 'react-images-upload';
 class AccountActionAdd extends Component {
     constructor(props) {
         super(props);
@@ -42,6 +42,7 @@ class AccountActionAdd extends Component {
         e.preventDefault();
         const { Account, UserName, Mail,PassWord, departmentId, positionId, Image, Address, Role} = this.state;
         const { history } = this.props;
+        console.log(Image)
         var account = {
             Account: Account,
             UserName: UserName,
@@ -49,7 +50,7 @@ class AccountActionAdd extends Component {
             PassWord: PassWord,
             departmentId: departmentId,
             positionId: positionId,
-            Image: Image,
+            Image: Image[0].name,
             Address: Address,
             Role: Role
         };
@@ -76,20 +77,24 @@ class AccountActionAdd extends Component {
         })
     }
 
-
+    onDrop=(picture)=> {
+        this.setState({
+            Image: picture
+        });
+    }
     render() {
         const { Account, UserName, Mail, PassWord, Image, Address } = this.state;
         const { position, department, role } = this.props;
             return (
                 <div className="container">
-                    <form onSubmit={this.onSave}>
+                    <form onSubmit={this.onSave} >
                     <MDBRow>
                         <MDBCol md="4" className="mb-3">
                             <label
                                 htmlFor="defaultForm"
                                 className="grey-text"
                             >
-                                Tên đăng nhậpnhập:
+                                Tên đăng nhập:
                             </label>
                             <input
                                 name="Account"
@@ -159,22 +164,32 @@ class AccountActionAdd extends Component {
                             />
                         </MDBCol>
                         <MDBCol md="4" className="mb-3">
-                            <label
+                            {/* <label
                                 htmlFor="defaultForm5"
                                 className="grey-text"
                             >
-                                Ảnh
-                            </label>
-                            <input
+                                    Ảnh
+                            </label> */}
+                                <ImageUploader
+                                    singleImage={true}
+                                    withIcon={false}
+                                    label={Image && Image[0].name.length > 0 ? Image[0].name : "Mời chọn hình ảnh"}
+                                    withPreview={true}
+                                    onChange={this.onDrop}
+                                    imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                    buttonText='Chọn ảnh'
+                                    name={"Image"}
+
+                                />
+                            {/* <input
                                 name="Image"
                                 value={Image}
                                 onChange={this.onChange}
-                                type="text"
+                                type="file"
                                 id="defaultForm5"
-                                className="form-control"
                                 placeholder="Image"
                                 required
-                            />
+                            /> */}
                         </MDBCol>
                         <MDBCol md="4" className="mb-3">
                             <label
