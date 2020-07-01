@@ -1,26 +1,40 @@
 import React, { Component } from 'react';
 import './App.css';
-import Menu from './components/Menu/Menu';
+import Siderbar from './components/Menu/Siderbar';
 import routes from './routes';
 import { Switch, Route, BrowserRouter as Router,  } from 'react-router-dom';
 import { createBrowserHistory } from 'history'
+import Footer from './components/Footer/Footer';
+import Navigationbar from './components/Navbars/Navigationbar';
+import { connect } from 'react-redux';
+import { PropTypes } from "prop-types";
+import FixedPlugin from './components/FixedPlugin/FixedPlugin';
+import PerfectScrollbar from 'perfect-scrollbar';
 
+var ps;
 const history = createBrowserHistory()
 class App extends Component {
+    
     render() {
+             const { isAuthenticated, user } = this.props.authReducer;
         return (
+            <div  className="container-scroller"  >
             <Router history={history}>
-                <div className="d-flex">
-                    <div style={{ width: 250 }} className="p-4">
-                        <Menu />
-                    </div>
-                    <div className="flex-grow-1">
-                        <div className="row">
+                <div  className="container-fluid page-body-wrapper"  >
+                    <nav className="sidebar sidebar-offcanvas" id="sidebar">
+                        <Siderbar isAuthenticated={isAuthenticated} user={user} />
+                    </nav>
+                    <div className="main-panel">
+                        <div className="content-wrapper">
                             {this.showContentMenus(routes)}
                         </div>
+                        <Footer />
                     </div>
                 </div>
-            </Router>                
+                    {/* </div>  */}
+            
+            </Router> 
+        </div>
         );
     }
 
@@ -45,4 +59,12 @@ class App extends Component {
 
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+    authReducer: state.authReducer,
+});
+
+App.propTypes = {
+    authReducer: PropTypes.object.isRequired
+}
+export default connect(mapStateToProps)(App);
+// export default App;

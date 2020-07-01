@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom'
 export default class SpecailizedList extends Component {
     render() {
         return (
-            <div className="panel panel-primary">
-            <div className="panel-heading d-flex justify-content-between">
-                    <h3 className="panel-title">Danh Sách Khoa</h3>
+           <div className="panel panel-primary">
+        
+             <div className="panel-heading d-flex justify-content-between"> 
+        
+                    <h3 className="card-title">Danh Sách Khoa</h3>
                     <Link to="/specailized/add" className="btn btn-info mb-10">
                         Thêm 
                     </Link>

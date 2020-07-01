@@ -19,11 +19,11 @@ export default class PointstudentList extends Component {
                             <th>Tên Môn học</th>
                             <th>Tên Học sinh</th>
                             <th>Năm học</th>
-                            <th>Điểm Kiểm tra lần 1</th>
-                            <th>Điểm Kiểm tra lần 2</th>
-                            <th>Điểm Giữa kì</th>
-                            <th>Điểm Cuối kì</th>
-                            <th>Điểm Thi</th>
+                            <th>Kiểm tra lần 1</th>
+                            <th> Kiểm tra lần 2</th>
+                            <th> Giữa kì</th>
+                            <th> Cuối kì</th>
+                            <th> Thi</th>
                             <th>Chức Năng</th>
                         </tr>
                     </thead>

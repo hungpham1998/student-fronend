@@ -10,6 +10,9 @@ import thunk from 'redux-thunk';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
+import "./assets/scss/black-dashboard-react.scss";
+import "./assets/demo/demo.css";
+import "./assets/css/nucleo-icons.css";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -22,7 +25,7 @@ const store = createStore(
 //     composeEnhancer(applyMiddleware(thunk)),
 //   );
 ReactDOM.render(
-  <Provider store={store}>
+    <Provider store={store}>
          <App />
     </Provider>, 
     document.getElementById('root')
