@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {  actGetLearnclassRequest } from '../../actions/LearnClass';
 import { connect } from 'react-redux';
-import { moment } from 'moment';
+import moment  from 'moment';
 import Reactexport from 'react-html-table-to-excel';
 
 class StudentLearnClass extends Component {
@@ -47,13 +47,14 @@ class StudentLearnClass extends Component {
     };
      
     studentRender = (student, index) => {
+        console.log(student)
         return (
             <tr key={student.Id}>
                 <td >{index + 1}</td >
                 <td>{student.Id}</td>
                 <td>{student.Code}</td>
                 <td>{student.Frist_Name + " " + student.Last_Name}</td>
-                <td> {student.Brithday ? moment(student.Brithday).format("DD/MM/YYYY"): null}</td>
+                <td> {moment(student.Brithday).format("DD/MM/YYYY")}</td>
                 <td> {student.Address}</td>
             </tr>
         );

@@ -2,148 +2,43 @@
 import React from "react";
 
 import classNames from "classnames";
-
-import {
-  Button,
-  Collapse,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  Input,
-  InputGroup,
-  NavbarBrand,
-  Navbar,
-  NavLink,
-  Nav,
-  Container,
-  Modal
-} from "reactstrap";
+import {Link} from "react-router-dom"
+import { Nav } from "reactstrap";
+import {DropdownButton, Dropdown,Image } from 'react-bootstrap';
 
 class Navigationbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapseOpen: false,
-      color: "navbar-transparent"
+    
     };
   }
-  componentDidMount() {
-    window.addEventListener("resize", this.updateColor);
-  }
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateColor);
-  }
-  // function that adds color white/transparent to the navbar on resize (this is for the collapse)
-  updateColor = () => {
-    if (window.innerWidth < 993 && this.state.collapseOpen) {
-      this.setState({
-        color: "bg-white"
-      });
-    } else {
-      this.setState({
-        color: "navbar-transparent"
-      });
-    }
-  };
-  // this function opens and closes the collapse on small devices
-  toggleCollapse = () => {
-    if (this.state.collapseOpen) {
-      this.setState({
-        color: "navbar-transparent"
-      });
-    } else {
-      this.setState({
-        color: "bg-white"
-      });
-    }
-    this.setState({
-      collapseOpen: !this.state.collapseOpen
-    });
-  };
-  // this function is to open the Search modal
-  toggleModalSearch = () => {
-    this.setState({
-      modalSearch: !this.state.modalSearch
-    });
-  };
   render() {
+    const { user, isAuthenticated } = this.props;
     return (
-      <div>
-        <Navbar
-          className={classNames("navbar-absolute", this.state.color)}
-          expand="lg"
-        >
-          <Container fluid>
-            <div className="navbar-wrapper">
-              <div
-                className={classNames("navbar-toggle d-inline", {
-                  toggled: this.props.sidebarOpened
-                })}
-              >
-                <button
-                  className="navbar-toggler"
-                  type="button"
-                  onClick={this.props.toggleSidebar}
-                >
-                  <span className="navbar-toggler-bar bar1" />
-                  <span className="navbar-toggler-bar bar2" />
-                  <span className="navbar-toggler-bar bar3" />
-                </button>
-              </div>
-              <NavbarBrand href="#pablo" onClick={e => e.preventDefault()}>
-                {this.props.brandText}
-              </NavbarBrand>
-            </div>
-            <button
-              aria-expanded={false}
-              aria-label="Toggle navigation"
-              className="navbar-toggler"
-              data-target="#navigation"
-              data-toggle="collapse"
-              id="navigation"
-              type="button"
-              onClick={this.toggleCollapse}
-            >
-              <span className="navbar-toggler-bar navbar-kebab" />
-              <span className="navbar-toggler-bar navbar-kebab" />
-              <span className="navbar-toggler-bar navbar-kebab" />
-            </button>
-            <Collapse navbar isOpen={this.state.collapseOpen}>
-              <Nav className="ml-auto" navbar>
-                <UncontrolledDropdown nav>
-                  <DropdownToggle
-                    caret
-                    color="default"
-                    data-toggle="dropdown"
-                    nav
-                    onClick={e => e.preventDefault()}
-                  >
-                    <div className="photo">
-                      <img alt="..." src={require("../../assets/img/anime3.png")} />
-                    </div>
-                    <b className="caret d-none d-lg-block d-xl-block" />
-                    <p className="d-lg-none">Log out</p>
-                  </DropdownToggle>
-                  <DropdownMenu className="dropdown-navbar" right tag="ul">
-                    <NavLink tag="li">
-                      <DropdownItem className="nav-item">Profile</DropdownItem>
-                    </NavLink>
-                    <NavLink tag="li">
-                      <DropdownItem className="nav-item">Settings</DropdownItem>
-                    </NavLink>
-                    <DropdownItem divider tag="li" />
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-                <li className="separator d-lg-none" />
-              </Nav>
-            </Collapse>
-          </Container>
-        </Navbar>
+      <div className="navbar-menu-wrapper d-flex align-items-center">
+        { isAuthenticated ? (
         
-      </div>
+          <Nav className="navbar-nav ml-auto">
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic" >
+                <span><i className="fa fa-user fa-fw"></i> {`chào mừng ` + ' : ' + user.user.UserName}</span>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Header className="dropdown-header text-center">
+                    <Image  className="img-md rounded-circle" src={user.user.Image ? user.user.Image : "../../../public/image/face24.png"}/>
+                    <p className="mb-1 mt-3 font-weight-semibold">{user.user.UserName}</p>
+                </Dropdown.Header>
+                <Dropdown.Item href="#/" >Thông tin tài khoản </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Nav>
+      ) : '' }
+    </div>
     );
   }
-}
+};
+          
 
 export default Navigationbar;

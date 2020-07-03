@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-
+import { MDBModal, MDBModalBody, MDBModalFooter, MDBBtn, MDBModalHeader } from 'mdbreact';
+ 
 export default class PointstudentItem extends Component {
+    state = {
+        modal: false
+      }
+      
+      toggle = () => {
+        this.setState({
+          modal: !this.state.modal
+        });
+      }
     onDelete = (id) => {
    
         this.props.onDelete(id);
@@ -23,18 +33,27 @@ export default class PointstudentItem extends Component {
                 <td>
                     <Link
                         to={`/pointstudent/${pointstudent.Id}/edit`}
-                        className="btn btn-success mr-10"
+                        className="btn btn-yellow darken-2"
                     >
                         Sửa
                 </Link>
-                    <button
+                     <button
                         type="button"
                         className="btn btn-danger"
-                        onClick={() => this.onDelete(pointstudent.id)}
+                        onClick={this.toggle}
                     >
-                        
-                        Xóa
-                </button>
+                            Xóa
+                            <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
+                                 <MDBModalHeader toggle={this.toggle}></MDBModalHeader>
+                                 <MDBModalBody>
+                                <span style={{ color: 'black' }}> Bạn chắc chắn muốn xóa bảng điểm <b> {pointstudent.Id}</b>  </span>
+                                </MDBModalBody>
+                                <MDBModalFooter>
+                                <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
+                                <MDBBtn color="primary" onClick={() => this.onDelete(pointstudent.id)}>Xóa</MDBBtn>
+                                </MDBModalFooter>
+                            </MDBModal>
+                     </button>
                 </td>
             </tr>
         );

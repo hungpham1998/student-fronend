@@ -87,11 +87,20 @@ export const actUpdateAttendancesheet = (attendancesheet) => {
 }
 
 export const actGetAttendancesheetStudentRequset = (id) => {
-    return dispatch => {
-        return callApi(`student/${id}/attendancesheet`, 'GET', null).then(res => {
-            console.log(res.data[0].attendancesheets)
-            dispatch(actGetAttendancesheetStudent(res.data[0].attendancesheets));
-        });
+    if (id) {
+        return dispatch => {
+            return callApi(`student/${id}/attendancesheet`, 'GET', null).then(res => {
+                if (res.data[0].attendancesheets) {
+                    dispatch(actGetAttendancesheetStudent(res.data[0].attendancesheets));
+                }
+                else {
+                    dispatch(actGetAttendancesheetStudent(null));
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        }
     }
 }
 export const actGetAttendancesheetStudent = (attendancesheet) => {

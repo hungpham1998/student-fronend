@@ -26,13 +26,13 @@ export default class AttendancesheetItem extends Component {
                 <td>{attendancesheet.Times}</td>
                 <td>{moment(attendancesheet.TimesDate).format("DD/MM/YYYY")}</td>
                 <td>{attendancesheet.Note}</td>
-                <td>{attendancesheet.subjectId != null ? attendancesheet.subject.Title :''}</td>
-                <td>{attendancesheet.studentId  != null ? attendancesheet.student.Frist_Name + ' ' +attendancesheet.student.Last_Name :' '}</td>
-                <td>{attendancesheet.accountId != null ? attendancesheet.account.UserName : ''}</td>
+                <td>{attendancesheet.subjectId ? attendancesheet.subject.Title :''}</td>
+                <td>{attendancesheet.studentId  ? attendancesheet.student.Frist_Name + ' ' +attendancesheet.student.Last_Name :' '}</td>
+                <td>{attendancesheet.accountId  ? attendancesheet.account.UserName : ''}</td>
                 <td>
                     <Link
                         to={`/attendancesheet/${attendancesheet.Id}/edit`}
-                        className="btn btn-success"
+                        className="btn btn-yellow darken-2"
                     >
                        Sửa
                 </Link>

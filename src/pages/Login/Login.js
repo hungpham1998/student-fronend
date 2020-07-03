@@ -53,8 +53,9 @@ class Login extends Component {
         const {errors, Account, PassWord} = this.state;
         return (
             <MDBContainer>
-                <MDBRow>
-                     <MDBCol md="6">
+                <MDBRow className="p-4">
+                    <MDBCol > </MDBCol>
+                     <MDBCol className="col-6">
                         <form onSubmit={(e)=>this.handleSubmit(e)}>
                             <p className="h4 text-center mb-4">Login</p>
                             <div className="form-group">
@@ -76,12 +77,13 @@ class Login extends Component {
                                     onChange={(e)=> this.handleInputChange(e) }
                                     value={PassWord}    />
                             </div>
-                            <MDBBtn className="btn btn-outline-purple" type="submit">
+                            <MDBBtn className="btn btn-primary waves-effect waves-light" type="submit">
                                 login
                                 <MDBIcon far icon="paper-plane" className="ml-2" />
                             </MDBBtn>
                         </form>
-                     </MDBCol>
+                    </MDBCol>
+                    <MDBCol > </MDBCol>
                 </MDBRow>
              </MDBContainer>
         )

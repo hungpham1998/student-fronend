@@ -28,9 +28,9 @@ export default class SpecailizedItem extends Component {
                 <td>
                     <Link
                         to={`/specailized/${specailized.Id}/edit`}
-                        className="btn btn-success"
+                        className="btn btn-yellow darken-2"
                     >
-                       Sửa
+                       Sửa 
                 </Link>
                     <button
                         type="button"

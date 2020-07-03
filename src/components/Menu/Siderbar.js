@@ -1,30 +1,25 @@
 import React, { Component } from 'react';
-import { Route, Link, Redirect, NavLink } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from "perfect-scrollbar";
 import listMenus from './listMenu'
-import { Nav, NavLink as ReactstrapNavLink } from "reactstrap";
+import { Nav, NavLink as ReactstrapNavLink, NavItem } from "reactstrap";
 var ps;
 
+
+
 class Siderbar extends Component {
-    render() {
-        // const { isAuthenticated, user } = this.props.authReducer;
+  render() {
         const { isAuthenticated, user } = this.props;
         return (
           <Nav>
-                {isAuthenticated ?
-                  (
-                      this.showMenus(listMenus, user.user && user.user.roles)
-                    
-                    )
-                    : <Redirect to="/login" />
-              }
-          </Nav>
-            
+              {isAuthenticated ? this.showMenus(listMenus, user.user && user.user.roles)   : <Redirect to="/login" />   }
+          </Nav>   
         );
     }
 
-    showMenus = (menus, roles) => {
+  
+      showMenus = (menus, roles) => {
         var result = null;
         if (menus.length > 0 && roles) {
             if (roles[0] === "ADMIN") {
@@ -37,9 +32,7 @@ class Siderbar extends Component {
                         exact={menu.exact? menu.exact: undefined}
                         className="nav-link"
                         >
-                            
-                           <i className={menu.icon}> {menu.name}</i>
-                            
+                        <i className={menu.icon}> {menu.name}</i>     
                         </Link>
                     </li>
                     );
@@ -55,17 +48,15 @@ class Siderbar extends Component {
                         )
                     }
                     else {
-                      return (
+                      return ( 
                         <li className="nav-item">
                             <Link
                               key={index}
                               to={menu.to}
                               exact={menu.exact? menu.exact: undefined}
                               className="nav-link"
-                              
                           >
-                            <i className={menu.icon} />
-                            <p>{menu.name}</p>
+                             <i className={menu.icon}> {menu.name}</i>
                           </Link>
                         </li>
                         )
@@ -89,8 +80,7 @@ class Siderbar extends Component {
                               exact={menu.exact? menu.exact: undefined}
                               className="nav-link"
                              >
-                            <i className={menu.icon} />
-                            <p>{menu.name}</p>
+                            <i className={menu.icon}> {menu.name}</i>
                             </Link>
                           </li>
                         );

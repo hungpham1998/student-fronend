@@ -5,7 +5,7 @@ export const actFetchLearnclassRequest = () => {
     return dispatch => {
         return  callApi('learnclass', 'GET', null).then(res => {
             let data = [];
-            res.data.learnclass.rows.forEach(item => {
+            res.data.learnclass.forEach(item => {
                 data.push(item);
             });
             dispatch(actFetchLearnclass(data));

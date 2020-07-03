@@ -10,7 +10,7 @@ export default class SpecailizedList extends Component {
         
                     <h3 className="card-title">Danh Sách Khoa</h3>
                     <Link to="/specailized/add" className="btn btn-info mb-10">
-                        Thêm 
+                        Thêm   <i className="fa fa-plus"/>
                     </Link>
             </div>
             <div className="panel-body">
