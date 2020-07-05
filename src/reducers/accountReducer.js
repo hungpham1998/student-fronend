@@ -18,10 +18,10 @@ const account = (state = accountState, action) => {
         case Types.FETCH_ACCOUNT:
             state = action.account;
             return [...state];
-        // case Types.DELETE_DEAPRTMENT:
-        //     index = findIndex(state, id);
-        //     state.splice(index, 1);
-        //     return [...state];
+        case Types.DELETE_ACCOUNT:
+            index = findIndex(state, id);
+            state.splice(index, 1);
+            return [...state];
         case Types.ADD_ACCOUNT:
             state=action.account;
             return [...state];

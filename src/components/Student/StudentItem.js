@@ -23,9 +23,9 @@ export default class StudentItem extends Component {
             showView: !this.state.showView
         });
     }
-    onDelete = (id) => {
+     onDelete = async (id) => {
    
-        this.props.onDelete(id);
+        await this.props.onDelete(id);
         this.setState({
             showView: !this.state.showView
         });

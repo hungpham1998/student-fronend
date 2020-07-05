@@ -2,13 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import AccountItem from '../../components/Account/AccountItem';
 import AccountList from '../../components/Account/AccountList';
-import { actFetchAccountRequest } from '../../actions/Accountaction';
+import { actFetchAccountRequest, actDeleteAccountRequest } from '../../actions/Accountaction';
 
 class AccountListPage extends Component {
      
     componentDidMount() {
         this.props.fetchAllAccount();
     }
+
+    onDelete = (Id) => {
+        this.props.onDeleteAccount(Id);
+    }
+
+
     render() {
         const { account } = this.props;
         return (
@@ -30,6 +36,7 @@ class AccountListPage extends Component {
                         key={index}
                         account={account}
                         index={index}
+                        onDelete={()=> this.onDelete(account.Id)}
                     />
                 );
             });
@@ -48,6 +55,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         fetchAllAccount : () => {
             dispatch(actFetchAccountRequest());
+        },
+        onDeleteAccount : (id) => {
+            dispatch(actDeleteAccountRequest(id));
         }
     }
 }

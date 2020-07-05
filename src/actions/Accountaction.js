@@ -41,3 +41,18 @@ export const actAddAccount = (account) => {
         account
     }
 }
+
+export const actDeleteAccountRequest = (id) => {
+    return dispatch => {
+        return callApi(`account/${id}`, 'DELETE', null).then(res =>{
+            dispatch(actDeleteAccount(id));
+        })
+    }
+}
+
+export const actDeleteAccount = (id) => {
+    return {
+        type : Types.DELETE_ACCOUNT,
+        id
+    }
+}

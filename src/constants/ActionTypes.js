@@ -80,6 +80,7 @@ export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 export const FETCH_ACCOUNT = 'FETCH_ACCOUNT';
 export const ADD_ACCOUNT = 'ADD_ACCOUNT';
+export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 
 //role 
 export const FETCH_ROLE = 'FETCH_ROLE';
