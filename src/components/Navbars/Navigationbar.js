@@ -5,6 +5,7 @@ import classNames from "classnames";
 import {Link} from "react-router-dom"
 import { Nav } from "reactstrap";
 import {DropdownButton, Dropdown,Image } from 'react-bootstrap';
+import { api } from "../../constants/Config";
 
 class Navigationbar extends React.Component {
   constructor(props) {
@@ -27,10 +28,10 @@ class Navigationbar extends React.Component {
 
               <Dropdown.Menu>
                 <Dropdown.Header className="dropdown-header text-center">
-                    <Image  className="img-md rounded-circle" src={user.user.Image ? user.user.Image : "../../../public/image/face24.png"}/>
+                    <Image  className="img-md rounded-circle" src={user.user.Image ? `${api}`+ user.user.Image : "../../../public/image/face24.png"}/>
                     <p className="mb-1 mt-3 font-weight-semibold">{user.user.UserName}</p>
                 </Dropdown.Header>
-                <Dropdown.Item href="#/" >Thông tin tài khoản </Dropdown.Item>
+                <Dropdown.Item href='/home' >Thông tin tài khoản </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Nav>

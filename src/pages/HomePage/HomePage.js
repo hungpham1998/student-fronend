@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Image } from 'react-bootstrap';
 import { Row, Col, Card,CardTitle } from 'reactstrap';
 import { CardBody } from 'react-bootstrap/Card';
+import { api } from '../../constants/Config';
 
 class HomePage extends Component {
     render() {
@@ -23,7 +24,7 @@ class HomePage extends Component {
                                                 width: 250,
                                                 height:250
                                             }}
-                                            className="rounded-circle" src={user.user.Image ? user.user.Image : "../../../public/image/face24.png"} />
+                                                className="rounded-circle" src={user.user.Image ? `${api}`+user.user.Image : "../../../public/image/face24.png"} />
                                             
                                             <p style={{textAlign:'center'}}> ảnh người dùng {user.user.UserName}</p>
                                         </div>

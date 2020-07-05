@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { actFetchLearnclassRequest } from '../../actions/LearnClass';
 import { actAddStudentRequest } from '../../actions/Student';
-
+import { MDBRow, MDBCol } from 'mdbreact';
+import ImageUploader from 'react-images-upload';
 class StudentActionAdd extends Component {
     constructor(props) {
         super(props);
@@ -38,20 +39,19 @@ class StudentActionAdd extends Component {
         e.preventDefault();
         var {  Code, Note, Image,Brithday,Last_Name, Frist_Name,learnclassId, Address} = this.state;
         var { history } = this.props;
-        var student = {
-            
-            Last_Name: Last_Name,
-            Frist_Name: Frist_Name,
-            Brithday: Brithday,
-            Image: Image,
-            Code:Code,
-            learnclassId: learnclassId,
-            Note: Note,
-            Address:Address
-        };
+
+        const data = new FormData()
+        data.append('Last_Name', Last_Name)
+        data.append('Frist_Name', Frist_Name)
+        data.append('Brithday', Brithday)
+        data.append('Code', Code)
+        data.append('learnclassId', learnclassId)
+        data.append('Image', Image[0])
+        data.append('Address', Address)
+        data.append('Note', Note)
+         console.log(data)
        
-            this.props.onAddStudent(student);
-        
+        this.props.onAddStudent(data);
         history.goBack();
     }
 
@@ -62,101 +62,151 @@ class StudentActionAdd extends Component {
     }
 
 
+    onDrop=(picture)=> {
+        this.setState({
+            Image: picture
+        });
+    }
+
     render() {
         const { Address, Note, Code, Image, Brithday, Last_Name, Frist_Name, } = this.state;
         const { learnclass } = this.props;
         return (
             <div className="container p-5">
                 <form onSubmit={this.onSave}>
-                    <div className="form-group row">
-                        <div className="col">
-                            <label >Ho: </label>
+                <MDBRow>
+                        <MDBCol md="4" className="mb-3">
+                            <label
+                                htmlFor="defaultForm"
+                                className="grey-text"
+                            >
+                                Ho:
+                            </label>
                             <input
-                                type="text"
-                                className="form-control"
                                 name="Frist_Name"
                                 value={Frist_Name}
                                 onChange={this.onChange}
-                            />
-                        </div>
-                        <div className="col">
-                            <label>Tên: </label>
-                            <input
                                 type="text"
-                                className="form-control row"
+                                id="defaultForm"
+                                className="form-control"
+                                placeholder=" Frist_Name"
+                                required
+                            />
+                        </MDBCol>
+                        <MDBCol md="4" className="mb-3">
+                            <label
+                                htmlFor="defaultForm1"
+                                className="grey-text"
+                            >
+                                Tên:
+                            </label>
+                            <input
                                 name="Last_Name"
                                 value={Last_Name}
                                 onChange={this.onChange}
-                            />
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <div className="col">
-                            <label>Mã: </label>
-                            <input
                                 type="text"
+                                id="defaultForm1"
                                 className="form-control"
+                                placeholder=" Last_Name"
+                                required
+                            />
+                        </MDBCol>
+                        <MDBCol md="4" className="mb-3">
+                            <label
+                                htmlFor="defaultForm2"
+                                className="grey-text"
+                            >
+                                Mã:
+                            </label>
+                            <input
                                 name="Code"
                                 value={Code}
                                 onChange={this.onChange}
+                                type="text"
+                                id="defaultForm2"
+                                className="form-control"
+                                placeholder=" Code"
+                                required
                             />
-                        </div>
-                        <div className="col">
-                            {/* <div className="form-control"> */}
-                            <label>Ngày sinh: </label>
+                        </MDBCol>
+                    </MDBRow>
+                    <MDBRow>
+                        <MDBCol md="4" className="mb-3">
+                            <label
+                                htmlFor="defaultForm4"
+                                className="grey-text"
+                            >
+                                Ngày sinh :
+                            </label>
                             <input
-                                type="date"
-                                className="form-control input-append date form_datetime"
                                 name="Brithday"
                                 value={Brithday}
                                 onChange={this.onChange}
+                                type="date"
+                                id="defaultForm4"
+                                className="form-control input-append date form_datetime"
+                                placeholder=" Brithday"
+                                required
+                            />
+                        </MDBCol>
+                        <MDBCol md="4" className="mb-3">
+                                <ImageUploader
+                                    singleImage={true}
+                                    withIcon={false}
+                                    label={Image && Image[0].name.length > 0 ? Image[0].name : "Mời chọn hình ảnh"}
+                                    withPreview={true}
+                                    onChange={this.onDrop}
+                                    imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                    buttonText='Chọn ảnh'
+                                    name={"Image"}
+
                                 />
-                            {/* </div> */}
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <div className="col">
-                            <label>Anh: </label>
+                        </MDBCol>
+                        <MDBCol md="4" className="mb-3">
+                            <label
+                                htmlFor="defaultForm6"
+                                className="grey-text"
+                            >
+                               Lớp:
+                            </label>
+                            <select id="defaultForm6"
+                                    className="form-control"
+                                    onChange={this.selectClass}
+                                    required>
+                                    <option value="">Chon</option>
+                                    {  (
+                                        learnclass.map((item, index) => {
+                                                return  <option value={item.Id}  key={index} >{item.Title}</option>
+                                            })
+                                    ) 
+                                    }
+                            </select> 
+                            </MDBCol>
+                        </MDBRow>
+                        <MDBRow>
+                            <label  htmlFor="defaultForm3"
+                                className="grey-text">Ghi Chú: </label>
                             <input
-                                type="text"
+                                id="defaultForm3"
                                 className="form-control"
-                                name="Image"
-                                value={Image}
+                                name="Note"
+                                value={Note}
+                                required
                                 onChange={this.onChange}
                             />
-                         </div>
-                        <div className="col">
-                            <label> Lớp: </label>
-                            <select className="form-control custom-select custom-select-sm" onChange={this.selectClass}
-                             >
-                                {  (
-                                    learnclass.map((item, index) => {
-                                            return  <option value={item.Id}  key={index} >{item.Title}</option>
-                                        })
-                                ) 
-                                }
-                                </select> 
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label>Ghi Chú: </label>
-                        <input
-                            className="form-control"
-                            name="Note"
-                            value={Note}
-                            onChange={this.onChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Địa chỉ: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="Address"
-                            value={Address}
-                            onChange={this.onChange}
-                        /> 
-                    </div>
+                        </MDBRow>
+                        <MDBRow>
+                            <label htmlFor="defaultForm5"
+                                className="grey-text">Địa chỉ: </label>
+                            <input
+                                type="text"
+                                id="defaultForm5"
+                                className="form-control"
+                                name="Address"
+                                value={Address}
+                                onChange={this.onChange}
+                            /> 
+                        </MDBRow>
                     <button type="submit" className="btn btn-primary">Lưu Lại</button>
                     <Link to="/studentlist" className="btn btn-danger mr-10">
                         Trở Lại

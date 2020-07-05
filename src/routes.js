@@ -33,7 +33,7 @@ import AttendancesheetActionPage from './pages/Attendancesheet/AttendancesheetAc
 
 const routes = [
     {
-        path: '/',
+        path: '/home',
         exact: true,
         main: () => <HomePage />
     },

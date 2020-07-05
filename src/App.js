@@ -16,7 +16,6 @@ class App extends Component {
     
     render() {
         const { isAuthenticated, user } = this.props.authReducer;
-        console.log(user)
         return (
             <div className="container-scroller"  >
                 {isAuthenticated ? (

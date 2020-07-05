@@ -51,7 +51,7 @@ class StudentLearnClass extends Component {
         return (
             <tr key={student.Id}>
                 <td >{index + 1}</td >
-                <td>{student.Id}</td>
+                {/* <td>{student.Id}</td> */}
                 <td>{student.Code}</td>
                 <td>{student.Frist_Name + " " + student.Last_Name}</td>
                 <td> {moment(student.Brithday).format("DD/MM/YYYY")}</td>
@@ -86,7 +86,7 @@ class StudentLearnClass extends Component {
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Mã</th>
+                                {/* <th>Mã</th> */}
                                 <th>Code</th>
                                 <th>Tên Học sinh</th>
                                 <th>Ngày sinh</th>

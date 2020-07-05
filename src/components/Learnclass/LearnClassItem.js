@@ -49,7 +49,7 @@ class LearnClassItem extends Component {
                                 </MDBModalFooter>
                         </MDBModal>
                 </button>
-                <Link className="btn btn-green accent-3" to={`/learnclass/${learnclass.Id}/export`}>Export</Link>
+                <Link className="btn btn-green accent-3" to={`/learnclass/${learnclass.Id}/export`}>Thông tin </Link>
                 </td>
             </tr>
         );

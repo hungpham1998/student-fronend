@@ -42,19 +42,19 @@ class AccountActionAdd extends Component {
         e.preventDefault();
         const { Account, UserName, Mail,PassWord, departmentId, positionId, Image, Address, Role} = this.state;
         const { history } = this.props;
-        console.log(Image)
-        var account = {
-            Account: Account,
-            UserName: UserName,
-            Mail: Mail,
-            PassWord: PassWord,
-            departmentId: departmentId,
-            positionId: positionId,
-            Image: Image[0].name,
-            Address: Address,
-            Role: Role
-        };
-            this.props.onAddAccount(account);
+
+        const data = new FormData()
+        data.append('Account', Account)
+        data.append('UserName', UserName)
+        data.append('Mail', Mail)
+        data.append('PassWord', PassWord)
+        data.append('departmentId', departmentId)
+        data.append('positionId', positionId)
+        data.append('Image', Image[0])
+        data.append('Address', Address)
+        data.append('Role', Role)
+        
+        this.props.onAddAccount(data);
         history.goBack();
     }
 
@@ -164,12 +164,6 @@ class AccountActionAdd extends Component {
                             />
                         </MDBCol>
                         <MDBCol md="4" className="mb-3">
-                            {/* <label
-                                htmlFor="defaultForm5"
-                                className="grey-text"
-                            >
-                                    Ảnh
-                            </label> */}
                                 <ImageUploader
                                     singleImage={true}
                                     withIcon={false}
@@ -181,15 +175,6 @@ class AccountActionAdd extends Component {
                                     name={"Image"}
 
                                 />
-                            {/* <input
-                                name="Image"
-                                value={Image}
-                                onChange={this.onChange}
-                                type="file"
-                                id="defaultForm5"
-                                placeholder="Image"
-                                required
-                            /> */}
                         </MDBCol>
                         <MDBCol md="4" className="mb-3">
                             <label
@@ -222,6 +207,7 @@ class AccountActionAdd extends Component {
                                     className="form-control"
                                     onChange={this.selectDepartment}
                                     required>
+                                    <option value="">Chon</option>
                                     {  (
                                         department.map((item, index) => {
                                                 return  <option value={item.Id}  key={index} >{item.Title}</option>
@@ -241,6 +227,7 @@ class AccountActionAdd extends Component {
                                     className="form-control"
                                     onChange={this.selectPosition}
                                     required>
+                                    <option value="">Chon</option>
                                     {  (
                                         position.map((item, index) => {
                                                 return  <option value={item.Id}  key={index} >{item.Title}</option>
@@ -260,6 +247,7 @@ class AccountActionAdd extends Component {
                                     className="form-control"
                                     onChange={this.selectRole}
                                     required>
+                                    <option value="">Chon</option>
                                     {  (
                                         role.map((item, index) => {
                                                 return  <option value={item.Title}  key={index} >{item.Title}</option>

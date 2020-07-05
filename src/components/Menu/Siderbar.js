@@ -25,7 +25,7 @@ class Siderbar extends Component {
             if (roles[0] === "ADMIN") {
               result = menus.map((menu, index) => {
                 return (
-                  <li className="nav-item">
+                  <li className="nav-item" key={index} >
                       <Link
                         key={index}
                         to={menu.to}
@@ -49,7 +49,7 @@ class Siderbar extends Component {
                     }
                     else {
                       return ( 
-                        <li className="nav-item">
+                        <li className="nav-item" key={index}>
                             <Link
                               key={index}
                               to={menu.to}
@@ -73,7 +73,7 @@ class Siderbar extends Component {
                     }
                     else {
                       return (
-                        <li className="nav-item">
+                        <li className="nav-item" key={index}>
                             <Link
                               key={index}
                               to={menu.to}
