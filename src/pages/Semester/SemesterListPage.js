@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-
-import { actFetchLearnclassRequest, actDeleteLearnclassRequest, onFilterLearnclass } from '../../actions/LearnClass';
-import LearnClassList from '../../components/Learnclass/LearnClassList';
-import LearnClassItem from '../../components/Learnclass/LearnClassItem';
-
+import SemesterItem from '../../components/Semester/SemesterItem';
+import SemesterList from '../../components/Semester/SemesterList';
+import { onFilterSemester, actFetchSemesterRequest, actDeleteSemesterRequest } from '../../actions/Semester';
 
 
-class LearnClassListPage extends Component {
+class SemesterListPage extends Component {
 
     constructor(props) {
         super(props)
@@ -18,11 +16,11 @@ class LearnClassListPage extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchAllLearnclass();
+        this.props.fetchAllSemester();
     }
 
     onDelete = (Id) => {
-        this.props.onDeleteLearnclass(Id);
+        this.props.onDeleteSemester(Id);
     }
 
 
@@ -36,7 +34,7 @@ class LearnClassListPage extends Component {
     onFind = (e) => {
         e.preventDefault();
         if (this.state.Title.length !== 0) {
-            this.props.onFilterLearnclass(this.state.Title);
+            this.props.onFilterSemester(this.state.Title);
             this.setState({
                 Title:' '
             })
@@ -45,7 +43,7 @@ class LearnClassListPage extends Component {
     }
 
     render() {
-        const { learnclass } = this.props;
+        const { semester } = this.props;
         return (
             
             <div className="container p-4">
@@ -62,23 +60,23 @@ class LearnClassListPage extends Component {
                             <button onSubmit={this.onFind} className="btn btn-primary d-block">Tìm kiếm </button>
                         </div>
                     </form>
-                    <LearnClassList>
-                        {this.showLearnclass(learnclass)}
-                    </LearnClassList>
+                    <SemesterList>
+                        {this.showSemester(semester)}
+                    </SemesterList>
                 </div>
         );
     }
 
-    showLearnclass(learnclass) {
+    showSemester(semester) {
         var result = null;
-        if (learnclass) {
-            result = learnclass.map((learnclass, index) => {
+        if (semester) {
+            result = semester.map((semester, index) => {
                 return (
-                    <LearnClassItem
+                    <SemesterItem
                         key={index}
-                        learnclass={learnclass}
+                        semester={semester}
                         index={index}
-                        onDelete={()=>this.onDelete(learnclass.Id)}
+                        onDelete={()=>this.onDelete(semester.Id)}
                     />
                 );
             });
@@ -90,22 +88,26 @@ class LearnClassListPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        learnclass: state.learnclass
+        semester: state.semester,
+        learnyear: state.learnyear
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        fetchAllLearnclass : () => {
-            dispatch(actFetchLearnclassRequest());
+        fetchAllSemester : () => {
+            dispatch(actFetchSemesterRequest());
         },
-        onDeleteLearnclass : (id) => {
-            dispatch(actDeleteLearnclassRequest(id));
+        onDeleteSemester : (id) => {
+            dispatch(actDeleteSemesterRequest(id));
         },
-        onFilterLearnclass: (Title) => {
-            dispatch(onFilterLearnclass(Title));
-        }
+        onFilterSemester: (Title) => {
+            dispatch(onFilterSemester(Title));
+        },
+        // fetchAllLearnyear : () => {
+        //     dispatch(actFetchLearnyearRequest());
+        // },
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LearnClassListPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SemesterListPage);

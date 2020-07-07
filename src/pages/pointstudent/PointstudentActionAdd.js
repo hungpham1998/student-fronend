@@ -5,6 +5,7 @@ import { actAddPointstudentRequest } from '../../actions/Pointstudent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { actFetchSubjectRequest } from '../../actions/Subject';
+import { actFetchSemesterRequest } from '../../actions/Semester';
 
 class PointstudentActionAdd extends Component {
     constructor(props) {
@@ -17,14 +18,14 @@ class PointstudentActionAdd extends Component {
             PointGK:'',
             subjectId:'',
             studentId: '',
-            learnyearId:''
+          //  semesterId:''
         };
     }
 
     componentDidMount() {
         this.props.fetchAllSubject();
         this.props.fetchAllStudent();
-        this.props.fetchAllLearnyear();
+       // this.props.fetchAllSemester();
     }
 
     
@@ -39,7 +40,7 @@ class PointstudentActionAdd extends Component {
 
     onSave = (e) => {
         e.preventDefault();
-        var {  PointKT1, PointKT2, PointCC,PointT,PointGK,studentId, subjectId,learnyearId} = this.state;
+        var {  PointKT1, PointKT2, PointCC,PointT,PointGK,studentId, subjectId,semesterId} = this.state;
         var { history } = this.props;
         var student = {
             PointKT1: PointKT1,
@@ -49,7 +50,7 @@ class PointstudentActionAdd extends Component {
             PointGK: PointGK,
             subjectId:subjectId,
             studentId: studentId,
-            learnyearId:learnyearId
+          //  semesterId:semesterId
         };
        
             this.props.onAddPointstudent(student);
@@ -75,10 +76,8 @@ class PointstudentActionAdd extends Component {
 
 
     render() {
-        const { PointGK, PointKT1, PointKT2, PointCC, PointT,  } = this.state;
-        const { subject, learnyear, student } = this.props;
-        console.log("student",student);
-        console.log("Learntear",learnyear)
+        const { PointGK, PointKT1, PointKT2, PointCC, PointT, semesterId } = this.state;
+        const { subject, semester, student } = this.props;
         return (
             <div className="container p-5">
                 <form onSubmit={this.onSave}>
@@ -109,18 +108,18 @@ class PointstudentActionAdd extends Component {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <div className="col">
+                        {/* <div className="col">
                             <label>Năm Học: </label>
                             <select className="form-control custom-select custom-select-sm" onChange={this.selectLearnYear}
                              >
                                 {  (
-                                    learnyear.map((item, index) => {
-                                            return  <option value={item.Id}  key={index} >{item.Title}</option>
+                                    semester.map((item, index) => {
+                                            return  <option value={item.Id}  key={index} >{item.Code}</option>
                                         })
                                     ) 
                                 }
                             </select> 
-                        </div>
+                        </div> */}
                         <div className="col">
                             <label>Điểm kiểm tra lần 1: </label>
                             <input
@@ -192,7 +191,7 @@ const mapStateToProps = (state, ownProps) => {
       //  itemEditing : state.itemEditing,
         subject: state.subject,
         student: state.student,
-        learnyear: state.learnyear
+        //semester: state.semester
     }
 };
 
@@ -207,9 +206,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         fetchAllStudent : () => {
             dispatch(actFetchStudentRequest());
         },
-        fetchAllLearnyear : () => {
-            dispatch(actFetchLearnyearRequest());
-        },
+        // fetchAllSemester : () => {
+        //     dispatch(actFetchSemesterRequest());
+        // },
     }
 };
 

@@ -22,6 +22,8 @@ const itemEditing = (state = initialState, action) => {
             return action.pointstudent;
         case Types.EDIT_ATTENDANCESHEET:
             return action.attendancesheet;
+        case Types.EDIT_SEMESTER:
+            return action.semester;
         default:
             return state;
     }

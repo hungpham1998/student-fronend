@@ -90,7 +90,7 @@ export const actGetAttendancesheetStudentRequset = (id) => {
     if (id) {
         return dispatch => {
             return callApi(`student/${id}/attendancesheet`, 'GET', null).then(res => {
-                if (res.data[0].attendancesheets) {
+                if (res.data[0].attendancesheets.lenght !== 0 ) {
                     dispatch(actGetAttendancesheetStudent(res.data[0].attendancesheets));
                 }
                 else {

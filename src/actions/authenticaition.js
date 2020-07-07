@@ -8,19 +8,18 @@ export const loginUser = (user) => {
     return dispatch => {
         return callApi('auth/signin', 'POST', user)
             .then(res => {
-                console.log(res.data)
             const  token  = res.data.accessToken;
             localStorage.setItem('jwtToken', token);
             setAuthToken(token);
             const decoded = jwt_decode(token);
                 dispatch(setCurrentUser(decoded));
-         })
-        .catch(err => {
-            dispatch({
-                type: Types.GET_ERRORS,
-                payload: err
-            });
-        });
+            })
+            .catch(err => {
+                dispatch({
+                    type: Types.GET_ERRORS,
+                    payload: err
+                });
+             });
     };
 }
 

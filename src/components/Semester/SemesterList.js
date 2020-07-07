@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-export default class PointstudentList extends Component {
+export default class SemesterList extends Component {
     render() {
         return (
             <div className="panel panel-primary">
             <div className="panel-heading d-flex justify-content-between">
-                <h3 className="panel-title">Bảng Điểm</h3>
-                <Link to="/pointstudent/add" className="btn btn-info mb-10">
+                <h3 className="panel-title">Danh Sách học kỳ</h3>
+                <Link to="/semester/add" className="btn btn-info mb-10">
                     Thêm 
                 </Link>
             </div>
@@ -16,15 +16,10 @@ export default class PointstudentList extends Component {
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Tên Môn học</th>
-                            <th>Tên Học sinh</th>
-                            {/* <th>Năm học</th> */}
-                            <th> Kiểm tra 1</th>
-                            <th> Kiểm tra 2</th>
-                            <th> Giữa kì</th>
-                            <th> Cuối kì</th>
-                            <th> Thi</th>
-                            <th> Tổng kết</th>
+                            <th>Tên học kỳ</th>
+                            <th>Mã</th>
+                            <th> Năm</th>
+                            <th>Note</th>
                             <th>Chức Năng</th>
                         </tr>
                     </thead>

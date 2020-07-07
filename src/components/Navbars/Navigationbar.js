@@ -23,7 +23,7 @@ class Navigationbar extends React.Component {
           <Nav className="navbar-nav ml-auto">
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic" >
-                <span><i className="fa fa-user fa-fw"></i> {`chào mừng ` + ' : ' + user.user.UserName}</span>
+                <span><i className="fa fa-user fa-fw"></i> {`chào mừng ` + ' : ' + user.user.UserName ? user.user.UserName: ''}</span>
               </Dropdown.Toggle>
 
               <Dropdown.Menu>

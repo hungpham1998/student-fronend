@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
-import { actFetchLearnyearRequest } from '../../actions/Learnyear';
+
 import { actFetchStudentRequest } from '../../actions/Student';
 import { actAddPointstudentRequest, actUpdatePointstudentRequest, actGetPointstudentRequest } from '../../actions/Pointstudent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { actFetchSubjectRequest } from '../../actions/Subject';
+import { actFetchSemesterRequest } from '../../actions/Semester';
 
 class PointstudentActionEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            PointKT1: '',
-            PointKT2: '',
-            PointCC: '',
-            PointT: '',
-            PointGK:'',
+            PointKT1: 0,
+            PointKT2: 0,
+            PointCC: 0,
+            PointT: 0,
+            PointGK:0,
             subjectId:'',
             studentId: '',
-            learnyearId:''
+            // semesterId:''
         };
     }
 
@@ -29,7 +30,7 @@ class PointstudentActionEdit extends Component {
         }
         this.props.fetchAllSubject();
         this.props.fetchAllStudent();
-        this.props.fetchAllLearnyear();
+        this.props.fetchAllSemester();
     }
 
 
@@ -46,7 +47,7 @@ class PointstudentActionEdit extends Component {
                 PointGK: itemEditing[0].PointGK,
                 subjectId: itemEditing[0].subjectId,
                 studentId: itemEditing[0].studentId,
-                learnyearId: itemEditing[0].learnyearId
+                semesterId: itemEditing[0].semesterId
             });
             console.log(this.state)
         }
@@ -64,30 +65,30 @@ class PointstudentActionEdit extends Component {
 
     onSave = (e) => {
         e.preventDefault();
-        const {Id, PointKT1, PointKT2, PointCC,PointT,PointGK,studentId, subjectId,learnyearId} = this.state;
+        const {Id, PointKT1, PointKT2, PointCC,PointT,PointGK,studentId, subjectId,semesterId} = this.state;
         const { history } = this.props;
         var student = {
             Id: Id,
-            PointKT1: PointKT1,
-            PointKT2: PointKT2,
-            PointCC: PointCC,
-            PointT: PointT,
-            PointGK: PointGK,
+            PointKT1: parseFloat(PointKT1),
+            PointKT2: parseFloat(PointKT2),
+            PointCC: parseFloat(PointCC),
+            PointT: parseFloat(PointT),
+            PointGK:parseFloat(PointGK),
             subjectId:subjectId,
             studentId: studentId,
-            learnyearId:learnyearId
+          //  semesterId: semesterId
         };
        
         this.props.onUpdatePointstudent(student);
         this.setState({
-            PointKT1: '',
-            PointKT2: '',
-            PointCC: '',
-            PointT: '',
-            PointGK:'',
+            PointKT1: 0,
+            PointKT2: 0,
+            PointCC: 0,
+            PointT: 0,
+            PointGK:0,
             subjectId:'',
             studentId: '',
-            subjectId:''
+           // semesterId:''
         })
         
         history.goBack();
@@ -111,8 +112,8 @@ class PointstudentActionEdit extends Component {
 
 
     render() {
-        const { PointGK, PointKT1, PointKT2, PointCC, PointT, subjectId, studentId, learnyearId } = this.state;
-        const { subject, learnyear, student } = this.props;
+        const { PointGK, PointKT1, PointKT2, PointCC, PointT, subjectId, studentId, semesterId } = this.state;
+        const { subject, semester, student } = this.props;
         return (
             <div className="container p-5">
                 <form onSubmit={this.onSave}>
@@ -145,19 +146,19 @@ class PointstudentActionEdit extends Component {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <div className="col">
+                        {/* <div className="col">
                             <label>Năm Học: </label>
                             <select className="form-control custom-select custom-select-sm" onChange={this.selectLearnYear}
-                                 value={learnyearId} 
+                                 value={semesterId} 
                             >
                                 {  (
-                                    learnyear.map((item, index) => {
+                                    semester.map((item, index) => {
                                             return  <option value={item.Id}  key={index} >{item.Title}</option>
                                         })
                                     ) 
                                 }
                             </select> 
-                        </div>
+                        </div> */}
                         <div className="col">
                             <label>Điểm kiểm tra lần 1: </label>
                             <input
@@ -229,7 +230,7 @@ const mapStateToProps = (state, ownProps) => {
        itemEditing : state.itemEditing,
         subject: state.subject,
         student: state.student,
-        learnyear: state.learnyear
+        semester: state.semester
     }
 };
 
@@ -244,8 +245,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         fetchAllStudent : () => {
             dispatch(actFetchStudentRequest());
         },
-        fetchAllLearnyear : () => {
-            dispatch(actFetchLearnyearRequest());
+        fetchAllSemester : () => {
+            dispatch(actFetchSemesterRequest());
         },
         onEditPointstudent: (id) => {
             dispatch(actGetPointstudentRequest(id))

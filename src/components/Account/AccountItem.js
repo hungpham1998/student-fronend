@@ -42,7 +42,7 @@ export default class AccountItem extends Component {
                 <td>{account.positionId != null ? account.position.Title : ''}</td>
                 <td>{account.roles.length > 0 ? account.roles.map(item => {return item.Title}): ''}</td>
 
-                <td>
+              
                     <Modal isOpen={this.state.showView} toggle={this.showModal} >
                     <ModalHeader toggle={this.showModal}>
                         <b style={{ color: 'black' }}> Bạn chọn chức năng với tài khoản {account.UserName}</b>
@@ -75,7 +75,7 @@ export default class AccountItem extends Component {
                             <button onClick={this.showModal} className="btn btn-secondary" > đóng </button>
                          </ModalFooter>
                      </Modal>
-                </td> 
+             
             </tr>
         );
     }

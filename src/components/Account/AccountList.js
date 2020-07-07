@@ -23,7 +23,6 @@ export default class AccountList extends Component {
                             <th>Phòng ban</th>
                             <th>Chức vụ</th>
                             <th> quyền </th>
-                            {/* <th>Chức Năng</th> */}
                         </tr>
                     </thead>
                     <tbody>

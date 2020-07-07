@@ -29,6 +29,12 @@ const listMenus = [
         icon: "fa fa-list-alt",
     },
     {
+        name: 'Học kỳ',
+        to: '/semesterlist',     
+        exact: false,
+        icon: "fa fa-list-alt",
+    },
+    {
         name: 'Môn học',
         to: '/subjectlist',     
         exact: false,

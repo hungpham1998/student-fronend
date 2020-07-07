@@ -25,7 +25,6 @@ export const actFetchAccount =  (account) => {
 export const actAddAccountRequest = (account) => {
     return dispatch => {
         return callApi('account', 'POST', account).then(res => {
-            console.log(res.data)
             let data = [];
             res.data.user.forEach((item) => {
                 data.push(item)

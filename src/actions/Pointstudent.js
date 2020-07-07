@@ -5,10 +5,15 @@ export const actFetchPointstudentRequest = () => {
     return dispatch => {
         return  callApi('pointstudent', 'GET', null).then(res => {
             let data = [];
-            res.data.pointstudent.forEach(item => {
-                data.push(item);
-            });
-            dispatch(actFetchPointstudent(data));
+            if (res.data.pointstudent) {
+                res.data.pointstudent.forEach(item => {
+                    data.push(item);
+                });
+                dispatch(actFetchPointstudent(data));
+            }
+            else {
+                dispatch(actFetchPointstudent(data));
+            }
         });
     };
 }

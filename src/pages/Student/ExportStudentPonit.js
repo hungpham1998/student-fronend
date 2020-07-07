@@ -13,7 +13,9 @@ class ExportStudentPonit extends Component {
             Id: '',
             Title: '',
             Learnclass:'',
-            pointstudents: []
+            pointstudents: [],
+            countCreaditNumber: 0,
+            accumulation: 0
         };
     }
 
@@ -29,11 +31,14 @@ class ExportStudentPonit extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps && nextProps.itemEditing) {
             const { itemEditing } = nextProps;
+            console.log(itemEditing)
             this.setState({
-                Id: itemEditing[0] && itemEditing[0].Id,
-                Title: itemEditing[0] && `${itemEditing[0].Frist_Name + " " + itemEditing[0].Last_Name}` ,
-                Learnclass: itemEditing[0] && itemEditing[0].learnclass.Title,
-                pointstudents: itemEditing[0] && itemEditing[0].pointstudents
+                Id: itemEditing && itemEditing.Student.student[0].Id,
+                Title: itemEditing && `${itemEditing.Student.student[0].Frist_Name + " " + itemEditing.Student.student[0].Last_Name}` ,
+                Learnclass: itemEditing && itemEditing.Student.student[0].learnclass.Title,
+                pointstudents: itemEditing && itemEditing.Student.student[0].pointstudents,
+                countCreaditNumber: itemEditing && itemEditing.Student.countCreaditNumber,
+                accumulation: itemEditing && itemEditing.Student.accumulation
             });
         }
     }
@@ -57,9 +62,10 @@ class ExportStudentPonit extends Component {
                <td>{pointstudent.PointGK}</td>
                <td>{pointstudent.PointCC}</td>
                <td>{pointstudent.PointT}</td>
+               <td>{pointstudent.PointTK}</td>
                <td>{ pointstudent.subject.Title}</td>
                <td>{ pointstudent.subject.CreaditNumber}</td>
-               <td>{ pointstudent.learnyear.Title}</td>
+               <td>{ pointstudent.subject.semester? pointstudent.subject.semester.Code: ''}</td>
            </tr>
        );
    }
@@ -87,64 +93,77 @@ class ExportStudentPonit extends Component {
     }
 
     render() {
-        const { Id, Title, Learnclass, pointstudents } = this.state;
+        const { Title, Learnclass, pointstudents } = this.state;
         const { attendancesheet } = this.props;
         return (
         <div className="container p-5 ">
             <div className="panel panel-primary">
                 <div className="panel-heading d-flex justify-content-between">
-                        <h3 className="panel-title">Thông tin của sinh viên: {Title} -- Lớp {Learnclass}</h3>
+                        <h3 className="panel-title">Thông tin của sinh viên: {Title} <br />
+                         Lớp {Learnclass}</h3>
                         <div>
-                        <Reactexport  
-                            className="btn btn-info"  
-                            table="point"  
-                            filename={"Bảng điểm sinh viên" + Title}  
-                                sheet="Sheet"
-                                buttonText="Export">
-                                <i class="fas fa-cloud-download-alt"></i>
-                        </Reactexport>
-                        <Link to="/studentlist" className="btn btn-danger mr-10">
-                            Trở Lại
-                        </Link>
-            </div>
+                            <Reactexport  
+                                className="btn btn-info"  
+                                table="point"  
+                                filename={"Bảng điểm sinh viên" + Title}  
+                                    sheet="Sheet"
+                                    buttonText="Export">
+                                    <i class="fas fa-cloud-download-alt"></i>
+                            </Reactexport>
+                            <Link to="/studentlist" className="btn btn-danger mr-10">
+                                Trở Lại
+                            </Link>
+                        </div>
                 </div>
-                    <div className="panel-body">
-                        <div className="row">
-                            <h3> Danh sách điểm thi</h3>
+                <div className="panel-body">
+                    <div className="row">
+                        <h3> Danh sách điểm thi</h3>
                         <table className="table table-bordered table-hover" id="point">
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Điểm kiểm tra lần 1</th>
-                                    <th>Điểm kiểm tra lần 2</th>
-                                    <th>Điểm Giữa kỳ</th>
-                                    <th>Điểm cuối kỳ</th>
-                                    <th>Điểm thi</th>
+                                    <th> kiểm tra 1</th>
+                                    <th> kiểm tra 2</th>
+                                    <th> Giữa kỳ</th>
+                                    <th> cuối kỳ</th>
+                                    <th> thi</th>
+                                    <th>Điểm Tk </th>
                                     <th>Tên môn</th>
                                     <th>Số tín</th>
-                                    <th>Năm</th>
+                                    <th>học kỳ</th>
                                 </tr>
                             </thead>
                             <tbody>
                                     {this.showPointstudent(pointstudents)}
                             </tbody>
-                            </table>
+                        </table>
                     </div>
-                        <div className="row">
-                            <h3> Thông tin điểm danh vắng</h3>
+                    <div className="row">
+                        <h3> Thông tin điểm danh vắng</h3>
                         <table className="table table-bordered table-hover" id="point">
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Số tiết</th>
-                                    <th>Ngày vắng</th>
-                                    <th>Ghi chú</th>
-                                    <th>Môn vắng</th>
-                                    <th>Giảng viên</th>
-                                </tr>
-                            </thead>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Số tiết</th>
+                                <th>Ngày vắng</th>
+                                <th>Ghi chú</th>
+                                <th>Môn vắng</th>
+                                <th>Giảng viên</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                {this.showAttendancesheet(attendancesheet)}
+                        </tbody>
+                    </table>
+                    </div>
+                    <div className="row">
+                        <h3> Kết quả học tập</h3>
+                        <table className="table table-bordered table-hover" id="point">
                             <tbody>
-                                    {this.showAttendancesheet(attendancesheet)}
+                                <tr>
+                                        <td> Trung bình chung tích lũy: {this.state.accumulation}</td>  
+                                        <td> Tổng tín chỉ: { this.state.countCreaditNumber}</td>      
+                                </tr>
                             </tbody>
                         </table>
                     </div>

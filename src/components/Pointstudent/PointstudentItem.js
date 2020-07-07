@@ -34,12 +34,13 @@ export default class PointstudentItem extends Component {
                 <td>{index + 1}</td>
                 <td>{pointstudent.subjectId != null ?pointstudent.subject.Title: ''}</td>
                 <td> {pointstudent.studentId != null ?pointstudent.student.Frist_Name + " " + pointstudent.student.Last_Name: ''}</td>
-                <td>{pointstudent.learnyearId != null ? pointstudent.learnyear.Title : ''}</td>
+                {/* <td>{pointstudent.semesterId != null ? pointstudent.semester.Code : ''}</td> */}
                 <td>{pointstudent.PointKT1}</td>
                 <td>{pointstudent.PointKT2}</td>
                 <td>{pointstudent.PointGK}</td>
                 <td>{pointstudent.PointCC}</td>
                 <td>{pointstudent.PointT}</td>
+                <td>{pointstudent.PointTK}</td>
                 <td>
                 <button className="btn-default btn Ripple-parent" onClick={this.showModal}> chức năng
                 <Modal isOpen={this.state.showView} toggle={this.showModal} >

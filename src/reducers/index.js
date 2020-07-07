@@ -13,7 +13,7 @@ import authReducer from './authReducer';
 import account from './accountReducer';
 import role from './roleReducer';
 import attendancesheet from './attendancesheet';
-
+import semester from './semesterReducer';
 
 const appReducers = combineReducers({
     department,
@@ -29,7 +29,8 @@ const appReducers = combineReducers({
     authReducer,
     account,
     role,
-    attendancesheet
+    attendancesheet,
+    semester
 });
 
 export default appReducers;

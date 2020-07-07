@@ -28,6 +28,8 @@ import AccountListPage from './pages/Account/AccountListPage';
 import AccountActionAdd from './pages/Account/AccountActionAdd';
 import AttendancesheetListPage from './pages/Attendancesheet/AttendancesheetListPage';
 import AttendancesheetActionPage from './pages/Attendancesheet/AttendancesheetActionPage';
+import SemesterListPage from './pages/Semester/SemesterListPage';
+import SemesterActionPage from './pages/Semester/SemesterActionPage';
 
 
 
@@ -191,6 +193,21 @@ const routes = [
         path: '/attendancesheet/:id/edit',
         exact: false,
         main: ({history, match}) => <AttendancesheetActionPage history={history} match={match} />
+    },
+    {
+        path: '/semesterlist',
+        exact: false,
+        main: () => <SemesterListPage />
+    },
+    {
+        path: '/semester/add',
+        exact: false,
+        main: ({history}) => <SemesterActionPage history={history} />
+    },
+    {
+        path: '/semester/:id/edit',
+        exact: false,
+        main: ({history, match}) => <SemesterActionPage history={history} match={match} />
     },
     {
         path: '/login',

@@ -3,9 +3,9 @@ import callApi from './../utils/apiCaller';
 
 export const actFetchSpecailizedRequest = () => {
     return dispatch => {
-        return  callApi('specailized', 'GET', null).then(res => {
+        return  callApi('specailized', 'GET', null).then((res) => {
             let data = [];
-            res.data.specailized.map(item => {
+            res.data.specailized.forEach(item => {
                 data.push(item);
             });
             dispatch(actFetchSpecailized(data));

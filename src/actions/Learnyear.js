@@ -1,7 +1,7 @@
 import * as Types from './../constants/ActionTypes';
 import callApi from './../utils/apiCaller';
 
-export const actFetchLearnyearRequest = () => {
+export const actFetchLearnyearRequest =  () => {
     return dispatch => {
         return  callApi('learnyear', 'GET', null).then(res => {
             let data = [];

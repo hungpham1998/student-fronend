@@ -14,6 +14,13 @@ export default function(state = initialState, action ) {
                 isAuthenticated: !isEmpty(action.payload),
                 user: action.payload
             }
+        case Types.GET_ERRORS:
+            console.log(action.payload)
+            return {
+                ...state,
+                isAuthenticated: !isEmpty(action.payload),
+                user: action.payload
+            }
         default: 
             return state;
     }
