@@ -25,7 +25,6 @@ class PointstudentActionAdd extends Component {
     componentDidMount() {
         this.props.fetchAllSubject();
         this.props.fetchAllStudent();
-       // this.props.fetchAllSemester();
     }
 
     

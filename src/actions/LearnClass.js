@@ -59,6 +59,15 @@ export const actGetLearnclassRequest = (id) => {
     }
 }
 
+export const actGetStudentLearnclassRequest = (id) => {
+    return dispatch => {
+        return callApi(`learnclass/${id}/student`, 'GET', null).then(res => {
+            console.log(res.data);
+            dispatch(actGetLearnclass(res.data));
+        });
+    }
+}
+
 export const actGetLearnclass = (learnclass) => {
     return {
         type : Types.EDIT_LEARNCLASS,

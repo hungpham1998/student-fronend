@@ -1,10 +1,8 @@
 
 import React from "react";
 
-import classNames from "classnames";
-import {Link} from "react-router-dom"
 import { Nav } from "reactstrap";
-import {DropdownButton, Dropdown,Image } from 'react-bootstrap';
+import { Dropdown,Image } from 'react-bootstrap';
 import { api } from "../../constants/Config";
 
 class Navigationbar extends React.Component {
@@ -23,7 +21,7 @@ class Navigationbar extends React.Component {
           <Nav className="navbar-nav ml-auto">
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic" >
-                <span><i className="fa fa-user fa-fw"></i> {`chào mừng ` + ' : ' + user.user.UserName ? user.user.UserName: ''}</span>
+                <span><i className="fa fa-user fa-fw"></i> {`chào mừng ` + ' : ' + user.user && user.user.UserName != null ? user.user && user.user.UserName: ''}</span>
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
