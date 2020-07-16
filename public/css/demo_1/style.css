@@ -403,8 +403,8 @@
 /* Sidebar */
 .sidebar {
   min-height: calc(100vh - 63px);
-  background: -webkit-gradient(linear, left bottom, left top, from(#00FFFF), to(#01DFD7));
-  background: linear-gradient(to top, #00FFFF, #01DFD7);
+  background: -webkit-gradient(linear, left bottom, left top, from(#fff), to(#fff));
+  background: linear-gradient(to top, #fff, #fff);
   font-family: "roboto", sans-serif;
   padding: 0;
   width: 185px;
@@ -452,7 +452,7 @@
           background: #1026de; }
         .sidebar > .nav .nav-item:not(.hover-open) .collapse .sub-menu .nav-item .nav-link:hover,
         .sidebar > .nav .nav-item:not(.hover-open) .collapsing .sub-menu .nav-item .nav-link:hover {
-          color: #fff; }
+          // color: #fff; }
           .sidebar > .nav .nav-item:not(.hover-open) .collapse .sub-menu .nav-item .nav-link:hover:before,
           .sidebar > .nav .nav-item:not(.hover-open) .collapsing .sub-menu .nav-item .nav-link:hover:before {
             background: #fff; }
@@ -471,7 +471,7 @@
       display: flex;
       padding: 15px 30px 15px 55px;
       white-space: nowrap;
-      color: #fff; }
+      // color: #fff; }
       .sidebar > .nav .nav-item .nav-link i.menu-arrow {
         margin-left: auto;
         margin-right: 0;
@@ -500,7 +500,7 @@
         width: 16px;
         line-height: 1;
         font-size: 18px;
-        color: #fff; }
+        //  color: #fff; }
       .sidebar > .nav .nav-item .nav-link .menu-title {
         color: inherit;
         display: inline-block;
@@ -513,7 +513,7 @@
       .sidebar > .nav .nav-item .nav-link:hover {
         color: #f2f2f2; }
     .sidebar > .nav .nav-item.active > .nav-link {
-      color: #fff; }
+      // color: #fff; }
       .sidebar > .nav .nav-item.active > .nav-link .menu-title,
       .sidebar > .nav .nav-item.active > .nav-link i {
         color: inherit; }
@@ -530,7 +530,7 @@
         border-radius: 3px;
         border: 1px solid rgba(255, 255, 255, 0.11);
         background-color: rgba(255, 255, 255, 0.1);
-        color: #fff;
+        // color: #fff;
         padding: 15px 25px; }
         .sidebar > .nav .nav-item.nav-profile .nav-link .profile-image {
           margin-right: 15px;
@@ -543,11 +543,11 @@
           margin-bottom: 5px;
           font-weight: 500;
           font-size: 15px;
-          color: #fff; }
+          // color: #fff; }
         .sidebar > .nav .nav-item.nav-profile .nav-link .designation {
           margin-bottom: 0;
           font-weight: 400;
-          color: #fff; }
+          // color: #fff; }
     .sidebar > .nav .nav-item.nav-category {
       color: rgba(255, 255, 255, 0.7);
       border-bottom: 1px solid rgba(255, 255, 255, 0.13);
@@ -567,7 +567,7 @@
         width: 10px;
         height: 10px;
         border-radius: 100%;
-        border: 2px solid #fff;
+      //  border: 2px solid #fff;
         display: block; }
     .sidebar > .nav:not(.sub-menu) > .nav-item > .nav-link {
       background: transparent;
@@ -579,12 +579,13 @@
       transition-property: "background", "color", "box-shadow", "padding", "box-shadow";
       transition-property: "background", "color", "box-shadow", "padding"; }
     .sidebar > .nav:not(.sub-menu) > .nav-item:hover:not(.nav-profile):not(.hover-open) > .nav-link:not([aria-expanded="true"]) {
-      background: #0f25d5;
+      // background: #0f25d5;
+      color: #4285f4;
       padding-left: 65px; }
       .sidebar > .nav:not(.sub-menu) > .nav-item:hover:not(.nav-profile):not(.hover-open) > .nav-link:not([aria-expanded="true"]):before {
         border-color: #fff; }
       .sidebar > .nav:not(.sub-menu) > .nav-item:hover:not(.nav-profile):not(.hover-open) > .nav-link:not([aria-expanded="true"]) .menu-title {
-        color: #fff; }
+        // color: #fff; }
       .sidebar > .nav:not(.sub-menu) > .nav-item:hover:not(.nav-profile):not(.hover-open) > .nav-link:not([aria-expanded="true"]) .menu-arrow:before {
         color: #bfccda; }
 
@@ -820,7 +821,7 @@
   -ms-flex-pack: center;
   justify-content: center;
   background: #2944b5;
-  color: #fff;
+  // color: #fff;
   font-size: 20px; }
   .average-price-card .icon-holder i {
     line-height: 1; }

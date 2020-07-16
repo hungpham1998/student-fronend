@@ -51,39 +51,36 @@ class Login extends Component {
     render() {
         const {errors, Account, PassWord} = this.state;
         return (
-            <MDBContainer>
-                <MDBRow className="p-4">
-                    <MDBCol > </MDBCol>
-                     <MDBCol className="col-6">
-                        <form onSubmit={(e)=>this.handleSubmit(e)}>
-                            <p className="h4 text-center mb-4">Login</p>
-                            <div className="form-group">
-                                <label>Account</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Account"
-                                    name="Account"
-                                    onChange={ (e)=> this.handleInputChange(e) }
-                                    value={Account}
-                                    />
-                            </div>
+            <MDBContainer style={{
+                padding: '25px',borderRadius: '10px', 
+                background: '-webkit-linear-gradient(top, #7579ff, #b224ef)' }} >
+                <form onSubmit={(e)=>this.handleSubmit(e)}>
+                    <p className="h4 text-center mb-4">Login</p>
+                    <div className="form-group">
+                        <label>Account</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Account"
+                            name="Account"
+                            onChange={ (e)=> this.handleInputChange(e) }
+                            value={Account}
+                            />
+                    </div>
 
-                            <div className="form-group">
-                                <label>Password</label>
-                                <input type="password" className="form-control" placeholder="Enter password"
-                                    name="PassWord"
-                                    onChange={(e)=> this.handleInputChange(e) }
-                                    value={PassWord}    />
-                            </div>
-                            <MDBBtn className="btn btn-primary waves-effect waves-light" type="submit">
-                                login
-                                <MDBIcon far icon="paper-plane" className="ml-2" />
-                            </MDBBtn>
-                        </form>
-                    </MDBCol>
-                    <MDBCol > </MDBCol>
-                </MDBRow>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input type="password" className="form-control" placeholder="Enter password"
+                            name="PassWord"
+                            onChange={(e)=> this.handleInputChange(e) }
+                            value={PassWord}    />
+                    </div>
+                    <MDBBtn className="btn btn-secondary waves-effect waves-light" type="submit" style={{marginLeft: '15%'}}>
+                        login
+                        <MDBIcon far icon="paper-plane" className="ml-2" />
+                    </MDBBtn>
+                </form>
+    
              </MDBContainer>
         )
     }
